@@ -1,5 +1,6 @@
 import './globals.css';
 
+import { Analytics } from '@vercel/analytics/react';
 import { Epilogue } from 'next/font/google';
 import type { Metadata } from 'next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -16,6 +17,7 @@ const RootLayout = ({ children }: React.PropsWithChildren) => (
   <html lang="en">
     <body className={cn(font.className, 'flex justify-center')}>
       {children}
+      <Analytics />
       <SpeedInsights />
     </body>
   </html>
