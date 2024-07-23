@@ -1,5 +1,6 @@
 import type { Props, PropsWithColors } from '@/types';
 
+import Image from 'next/image';
 import { cn } from '@/utils';
 import { colors } from '@/themes';
 import { motion } from 'framer-motion';
@@ -14,8 +15,8 @@ export const HeroTitle = ({ className }: Props) => (
     transition={{ delay: 0.25, duration: 0.5, ease: [0.4, 0.0, 0.2, 1] }}
     className={cn('text-center text-8xl font-semibold text-primary', className)}
   >
-    <br /> I&apos;m <span className="text-tertiary">[Your Name]</span>,
-    <br /> [Your Title]
+    <br /> I&apos;m <span className="text-tertiary">Hiếu Nhân Nguyễn</span>,
+    <br />
   </motion.h1>
 );
 
@@ -36,7 +37,9 @@ export const HeroReview = ({ className }: Props) => (
         fill={colors.primary}
       />
     </svg>
-    <p className="text-xl font-medium text-primary">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <p className="text-xl font-medium text-primary">
+      I adopted the mission of contributing to the development and closing the gap of inequality among people.
+    </p>
   </motion.div>
 );
 
@@ -48,25 +51,38 @@ export const HeroExperience = ({ className }: Props) => (
     className={className}
   >
     <p className="text-end text-primary">
-      <span className="text-5xl font-bold">[Number] Years</span>
+      <span className="text-4xl font-bold">
+        Undergraduate Student
+        <br />
+        in Economics
+      </span>
       <br />
-      <span className="text-xl">Experience</span>
+      <span className="text-xl">Fulbright University Vietnam</span>
     </p>
   </motion.div>
 );
 
 export const HeroEclipse = ({ color = 'tertiary', className }: PropsWithColors) => (
-  <motion.div
-    initial={{ opacity: 0, scale: 0, originY: 1 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.5, ease: [0.4, 0.0, 0.2, 1] }}
-    className={className}
-  >
-    <svg width="813" height="406" viewBox="0 0 813 406" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M812.673 406C542.08 406 271.487 406 0.894409 406C0.894409 181.833 182.617 0.110565 406.784 0.110565C630.95 0.110565 812.673 181.833 812.673 406Z"
-        fill={colors[color]}
-      />
-    </svg>
-  </motion.div>
+  <div className={cn(className, 'flex h-full items-end justify-center overflow-hidden')}>
+    <motion.div
+      initial={{ opacity: 0, scale: 0, originY: 1 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: 0.25, duration: 0.5, ease: [0.4, 0.0, 0.2, 1] }}
+    >
+      <svg width="813" height="406" viewBox="0 0 813 406" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M812.673 406C542.08 406 271.487 406 0.894409 406C0.894409 181.833 182.617 0.110565 406.784 0.110565C630.95 0.110565 812.673 181.833 812.673 406Z"
+          fill={colors[color]}
+        />
+      </svg>
+    </motion.div>
+    <motion.div
+      initial={{ opacity: 0, scale: 0, originY: 1 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, ease: [0.4, 0.0, 0.2, 1] }}
+      className="absolute -bottom-4"
+    >
+      <Image src="/me.png" width="400" height="400" alt="Me" />
+    </motion.div>
+  </div>
 );

@@ -13,7 +13,7 @@ export const About = ({ id, className }: Props) => (
       className
     )}
   >
-    <div className="flex flex-col items-center justify-between gap-16">
+    <div className="flex flex-col justify-between gap-8">
       <h2 className="w-full text-start text-5xl">About Me</h2>
       <AboutContent />
     </div>

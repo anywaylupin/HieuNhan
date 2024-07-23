@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
+import Image from 'next/image';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { TimelineItem, type TimelineItemProps } from '@/components';
@@ -11,63 +12,245 @@ export interface StickyScrollContent extends TimelineItemProps {
 
 export const content: StickyScrollContent[] = [
   {
-    title: 'Software Engineer @ TechCorp',
-    dateTime: 'Jan 2020 - Present',
-    description:
-      'As a Software Engineer at TechCorp, I have spearheaded numerous projects that leverage cutting-edge technology to deliver innovative solutions. My role involves collaborating with cross-functional teams to design, develop, and deploy high-quality software products. Through agile methodologies and continuous integration practices, I ensure our solutions are scalable and maintainable. Key achievements include leading the development of a microservices architecture that improved system reliability and performance by 30%.',
-    content: (
-      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white">
-        TechCorp Experience
+    icon: (
+      <div className="size-full">
+        <Image src="/fulbright-logo.jpeg" width="64" height="64" alt="Social Impact Catalyst" />
       </div>
     ),
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#ffffff">
-        <path d="m480-400-80-80 80-80 80 80-80 80Zm-85-235L295-735l185-185 185 185-100 100-85-85-85 85ZM225-295 40-480l185-185 100 100-85 85 85 85-100 100Zm510 0L635-395l85-85-85-85 100-100 185 185-185 185ZM480-40 295-225l100-100 85 85 85-85 100 100L480-40Z" />
-      </svg>
+    title: (
+      <p>
+        Intern at Marketing and Communications Team
+        <br />@ <span className="text-[#ffad1d]">Fulbright University Vietnam</span>
+      </p>
+    ),
+    dateTime: 'August 2023 - Present',
+    description: (
+      <ul className="flex flex-col gap-4 tracking-tight">
+        <li>
+          Creating content, designing and editing videos for school promotion, including school Facebook Page, Tiktok
+          and Instagram. Highlighted sample with 1{' '}
+          <a className="font-semibold" href="https://www.facebook.com/share/p/M1K4WcNQaJQMvm77/">
+            post
+          </a>{' '}
+          and 1{' '}
+          <a className="font-semibold" href="https://fb.watch/tvwQmFp95T/">
+            video
+          </a>
+          <span>.</span>
+        </li>
+        <li>
+          Main coordinator for Stage Preparation of Fulbright Convocation 2023, including managing and assisting new
+          cohort talent performances, leading the backstage logistics such as sounds and lighting. The event is an
+          important event of Fulbright with the scope of hundreds students and faculties, and 30+ strategic partners and
+          donors.
+        </li>
+      </ul>
+    ),
+    content: (
+      <div className="flex h-full w-full items-center justify-center border-[3px] border-[#ffad1d] text-white">
+        <div className="loader absolute"></div>
+        <div className="absolute">
+          <iframe
+            title="Facebook"
+            src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FFulbrightUniVN%2Fposts%2Fpfbid02ai9VFVfFM1YSRb2f3fRTxDUyLB76yT7KaHniHrZVpb1raVhwwk83aBvnfkczytpcl&show_text=true&width=500"
+            width="500"
+            height="475"
+            style={{ border: 'none', overflow: 'hidden' }}
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
     )
   },
   {
-    title: 'Frontend Developer @ WebSolutions',
-    dateTime: 'Mar 2018 - Dec 2019',
-    description:
-      'At WebSolutions, I worked as a Frontend Developer where I was responsible for creating responsive and user-friendly web interfaces. Utilizing technologies like React, Redux, and CSS-in-JS, I built dynamic web applications that enhanced user engagement and satisfaction. My contributions included optimizing page load times by 40% and implementing a design system that standardized UI components across projects. I also collaborated closely with UX designers to ensure the final product met user needs and business goals.',
-    content: <div className="flex h-full w-full items-center justify-center text-white"></div>,
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#ffffff">
-        <path d="M312-312h144v-144H312v144Zm0-192h144v-144H312v144Zm192 192h144v-144H504v144Zm0-192h144v-144H504v144ZM168-192q-29.7 0-50.85-21.16Q96-234.32 96-264.04v-432.24Q96-726 117.15-747T168-768h624q29.7 0 50.85 21.16Q864-725.68 864-695.96v432.24Q864-234 842.85-213T792-192H168Zm0-72h624v-432H168v432Zm0 0v-432 432Z" />
-      </svg>
+    icon: <Image src="/sic-logo.png" width="32" height="32" alt="Social Impact Catalyst" />,
+    title: (
+      <p>
+        President @{' '}
+        <a className="text-[#4472C4]" href="https://www.socialimpactcatalyst.org/">
+          FUV Social Impact Catalyst Vietnam
+        </a>
+      </p>
+    ),
+    dateTime: 'January 2023 - Present',
+    description: (
+      <ul className="flex flex-col gap-4">
+        <li>
+          Co-building the FUV SIC’s mission and vision. As a school chapter of{' '}
+          <a className="font-semibold text-[#4472C4]" href="https://www.socialimpactcatalyst.org/">
+            Social Impact Catalyst
+          </a>{' '}
+          Singapore, FUV SIC runs as a form of student club with an aim to enhance social impact spirit for Fulbright
+          students.
+        </li>
+        <li>
+          Leading the team of 12 people to execute the flagship impact project -{' '}
+          <a className="font-semibold text-[#4472C4]" href="https://www.facebook.com/fuvsic.ilmprogram">
+            Impact Leader Mentorship Program
+          </a>
+          <span>.</span> Oversee all the process of the project including researching current needs of the target
+          audience; validating the hypothesis, outlining the program’s key objectives, timeline and activities;
+          executing 1.5 month program with the total of 5 mentor-mentee group.
+        </li>
+      </ul>
+    ),
+    content: (
+      <div className="flex h-full w-full items-center justify-center border-[3px] border-[#4472C4] text-white">
+        <Image
+          src="/fuv-logo.jpg"
+          width="940"
+          height="788"
+          className="size-full bg-opacity-10 object-cover shadow-lg group-hover/card:shadow-xl"
+          alt="Social Impact Catalyst"
+        />
+      </div>
     )
   },
   {
-    title: 'Backend Developer @ DataStream',
-    dateTime: 'Jun 2016 - Feb 2018',
-    description:
-      'In my role as a Backend Developer at DataStream, I focused on building robust and scalable server-side applications. My expertise in Node.js, Express, and MongoDB allowed me to develop RESTful APIs that powered various client applications. I played a key role in migrating legacy systems to a modern stack, which resulted in a 50% reduction in server response times. Additionally, I implemented security best practices to protect sensitive data and ensure compliance with industry standards.',
-    content: (
-      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] text-white">
-        DataStream Experience
+    icon: (
+      <div className="size-full">
+        <Image src="/fulbright-logo.jpeg" width="64" height="64" alt="Social Impact Catalyst" />
       </div>
     ),
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#ffffff">
-        <path d="M480-120q-151 0-255.5-46.5T120-280v-400q0-66 105.5-113T480-840q149 0 254.5 47T840-680v400q0 67-104.5 113.5T480-120Zm0-485q87 0 177.33-26.17 90.34-26.16 111.34-57.83-21.67-31-111.84-57.67-90.16-26.66-176.83-26.66-89 0-177.5 25.83T190.67-689q23.33 33.33 111.16 58.67Q389.67-605 480-605Zm-.67 209q42 0 83-4.33 41-4.34 78.5-12.84T712.17-434q33.83-12.33 61.16-27.67V-605q-28 15.33-61.83 27.67-33.83 12.33-71.67 20.83-37.83 8.5-78.16 13.17-40.34 4.66-82.34 4.66T396-543.33q-41.33-4.67-78.83-13.17t-70.84-20.83Q213-589.67 186.67-605v143.33Q213-446.33 246-434q33 12.33 70.5 20.83 37.5 8.5 78.83 12.84 41.34 4.33 84 4.33Zm.67 209.33q47.33 0 97.17-8 49.83-8 91.5-21.16Q710.33-229 739-245.17q28.67-16.16 34.33-33.16v-116Q746-379 712.17-367q-33.84 12-71.34 20.5t-78.16 12.83q-40.67 4.34-83.34 4.34-42.66 0-84-4.34Q354-338 316.5-346.5T246-367q-33-12-59.33-27.33v117q5 16.33 33.16 32.66Q248-228.33 290-215.5q42 12.83 92 20.83 50 8 98 8Z" />
-      </svg>
+    title: (
+      <p>
+        Admissions Student Assistant Workstudy
+        <br />@ <span className="text-[#ffad1d]">Fulbright University Vietnam</span>
+      </p>
+    ),
+    dateTime: 'August 2021 - Present',
+    description: (
+      <ul className="flex flex-col gap-4">
+        <li>
+          Leading of a team of 7 people virtually, arrange all the process of Buddies program for 7 highschool students.
+        </li>
+        <li>
+          Designing and editing videos for admissions promotion, highlighted samples with 1 ads running{' '}
+          <a className="font-semibold" href="https://www.facebook.com/share/p/GfzP49X1AJBhnWaE/">
+            post
+          </a>{' '}
+          and 1{' '}
+          <a className="font-semibold" href="https://fb.watch/tvwQmFp95T/">
+            video
+          </a>
+          <span>.</span>
+        </li>
+        <li>
+          Working with large data and intensive information due to admission process. Working with lots of stake holders
+          such as highschool students, undergraduate students and faculties along the way to process the tasks and
+          timeline.
+        </li>
+      </ul>
+    ),
+    content: (
+      <div className="flex h-full w-full items-center justify-center border-[3px] border-[#ffad1d] p-1">
+        <div className="loader absolute"></div>
+        <div className="absolute w-fit">
+          <iframe
+            title="Facebook"
+            src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FRoadtoFUV%2Fposts%2Fpfbid02Lt7CVsFHZcvsyDKfjkY8RBTr3TbECrRwXGbxwHD7M9uh2P84CzY4AMqfB3zFp397l&show_text=true&width=500"
+            width="500"
+            height="475"
+            style={{ border: 'none', overflow: 'hidden' }}
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
     )
   },
   {
-    title: 'Intern @ StartupHub',
-    dateTime: 'Jan 2015 - May 2016',
-    description:
-      'During my internship at StartupHub, I gained hands-on experience in various aspects of software development. I contributed to both frontend and backend projects, learning the intricacies of full-stack development. My responsibilities included writing unit tests, debugging code, and participating in code reviews. This experience provided me with a solid foundation in software engineering principles and practices, and I was able to apply my academic knowledge to real-world projects effectively.',
-    content: (
-      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white">
-        StartupHub Experience
+    icon: (
+      <div className="size-full">
+        <Image src="/fulbright-logo.jpeg" width="64" height="64" alt="Social Impact Catalyst" />
       </div>
     ),
+    title: (
+      <p>
+        Intern at Development and Strategic Initiatives Department
+        <br />@ <span className="text-[#ffad1d]">Fulbright University Vietnam</span>
+      </p>
+    ),
+    dateTime: 'August 2022 - August 2023',
+    description: (
+      <ul>
+        <li>
+          Main coordinator of Talent Giving at{' '}
+          <a
+            className="font-semibold"
+            href="https://fulbright.edu.vn/fulbright-fun-run-2023-where-the-spirit-of-community-and-friendship-truly-shined/"
+          >
+            Fulbright Giving Week
+          </a>
+          <span>,</span> including manage all stakeholders involved in holding Giving Sessions and promote them to reach
+          to the target of 2000 USD donation.
+        </li>
+        <li>
+          Being in-charged of researching and outreaching leads of in-kind sponsors for the upcoming Fulbright Run Race
+          with the expected volume of 20,000 online runners and 7,000 offline runners. Managing the whole 200 leads in
+          the scope of reaching out, communicating, and enhancing partnerships.
+        </li>
+        <li>
+          Being an ambassador for Fulbright students spirit and being the representative to meet high-class sponsors to
+          share about Fulbright vision and mission. Deeply experiencing the bare roots of Fulbright initiatives to
+          follow its vision.
+        </li>
+      </ul>
+    ),
+    content: (
+      <div className="flex size-full items-center justify-center border-[3px] border-[#ffad1d] text-white">
+        <Image
+          src="/fulbright-fun-run.jpg"
+          width="1680"
+          height="1120"
+          className="size-full bg-opacity-10 object-cover shadow-lg group-hover/card:shadow-xl"
+          alt="Social Impact Catalyst"
+        />
+      </div>
+    )
+  },
+  {
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#ffffff">
-        <path d="M146.67-80q-27 0-46.84-19.83Q80-119.67 80-146.67v-466.66q0-27 19.83-46.84Q119.67-680 146.67-680H380v-133.33q0-27 19.83-46.84Q419.67-880 446.94-880h66.12q27.27 0 47.11 19.83Q580-840.33 580-813.33V-680h233.33q27 0 46.84 19.83Q880-640.33 880-613.33v466.66q0 27-19.83 46.84Q840.33-80 813.33-80H146.67Zm0-66.67h666.66v-466.66H580v20q0 29.66-19.83 48.16-19.84 18.5-47.11 18.5h-66.12q-27.27 0-47.11-18.5Q380-563.67 380-593.33v-20H146.67v466.66Zm88-98H474V-260q0-17.67-9.17-31.83Q455.67-306 440.67-312q-28-10.33-46.84-14.17Q375-330 356-330q-20.33 0-41.5 4.5T268.67-312q-15.67 6-24.84 20.17-9.16 14.16-9.16 31.83v15.33Zm330.66-64.66H732v-53.34H565.33v53.34ZM356-362.67q23.33 0 39.67-16.33Q412-395.33 412-418.67q0-23.33-16.33-39.66-16.34-16.34-39.67-16.34-23.33 0-39.67 16.34Q300-442 300-418.67q0 23.34 16.33 39.67 16.34 16.33 39.67 16.33Zm209.33-62H732V-478H565.33v53.33ZM446.67-593.33h66.66v-220h-66.66v220ZM480-380Z" />
-      </svg>
+      <div className="size-full">
+        <Image src="/fbc-logo.jpg" width="64" height="64" alt="Social Impact Catalyst" />
+      </div>
+    ),
+    title: (
+      <p>
+        President @ <span className="text-[#00196e]">Fulbright University Business Club</span>
+      </p>
+    ),
+    dateTime: 'August 2022 - August 2023',
+    description: (
+      <ul>
+        <li>
+          Main allocating all processes of FBC, including recruiting new members, planning the AY club timeline,
+          managing human resources and club activities, as well as coordinating stakeholders in implementing club
+          projects.
+        </li>
+        <li>
+          Successfully completed the two-semester plan covering gathering 22 members, co-organized 6 internal training
+          workshops, 3 external training workshops (1 C level and 2 Manager level), and 3 field trips to Companies
+          (Shopee, VNG, Timo), other collaboration with external clubs and Fulbright departments; and enhencing club’s
+          bonding with internal activities.
+        </li>
+        <li>
+          Leading coreteam to initiate a full transition process including engagement, recruitment, training and
+          reflection to sustainably encourage the young leaders to be enhancing the club’s vision and mission.
+        </li>
+      </ul>
+    ),
+    content: (
+      <div className="flex size-full items-center justify-center border-[3px] border-[#1597BB] text-white">
+        <Image
+          src="/fbc-cv.jpg"
+          width="1680"
+          height="1120"
+          className="size-full bg-opacity-10 object-cover shadow-lg group-hover/card:shadow-xl"
+          alt="Social Impact Catalyst"
+        />
+      </div>
     )
   }
 ];
@@ -95,14 +278,7 @@ export const JobList = () => {
     setActiveCard(closestBreakpointIndex);
   });
 
-  const linearGradients = useMemo(
-    () => [
-      'linear-gradient(to bottom right, var(--cyan-500), var(--emerald-500))',
-      'linear-gradient(to bottom right, var(--pink-500), var(--indigo-500))',
-      'linear-gradient(to bottom right, var(--orange-500), var(--yellow-500))'
-    ],
-    []
-  );
+  const linearGradients = useMemo(() => ['#ffad1d', '#ffffff', '#ffad1d', '#ffad1d', '#1597BB'], []);
 
   const [backgroundGradient, setBackgroundGradient] = useState(linearGradients[0]);
 
@@ -112,7 +288,7 @@ export const JobList = () => {
 
   return (
     <motion.div
-      className="relative mb-32 flex h-[30rem] justify-center gap-4 space-x-10 overflow-hidden overflow-y-auto rounded-md pr-2"
+      className="custom-scrollbar relative mb-32 flex h-[30rem] justify-center space-x-6 overflow-hidden overflow-y-auto rounded-md pr-2"
       ref={ref}
     >
       <div className="relative flex w-full max-w-4xl items-start">
@@ -132,7 +308,7 @@ export const JobList = () => {
       </div>
       <div
         style={{ background: backgroundGradient }}
-        className="sticky top-0 hidden h-full w-fit min-w-96 overflow-hidden rounded-md bg-white lg:block"
+        className="sticky top-0 hidden h-full min-w-[500px] max-w-[500px] overflow-hidden rounded-md bg-white lg:block"
       >
         {content[activeCard].content ?? null}
       </div>

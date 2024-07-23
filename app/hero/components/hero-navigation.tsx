@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { IconMail } from '@/components';
+import { MY_EMAIL } from '@/app/constants';
 import type { Props } from '@/types';
 import { cn } from '@/utils';
 import { colors } from '@/themes';
@@ -44,7 +45,9 @@ const Icon = ({ iconType, color = 'primary' }: { iconType: string; color?: keyof
         strokeLinejoin="round"
       />
     </svg>
-  ) : <IconMail color={color}/>;
+  ) : (
+    <IconMail color={color} />
+  );
 
 const HoverItem = ({ index, type, label, href, hoveredIndex, setHoveredIndex, iconType }: HoverItemProps) => {
   const active = hoveredIndex === index;
@@ -76,10 +79,9 @@ const HoverItem = ({ index, type, label, href, hoveredIndex, setHoveredIndex, ic
   );
 };
 
-const email = 'your_email@example.com';
 const items = [
   { type: 'button', label: 'Portfolio', iconType: 'link' },
-  { type: 'link', label: 'Say Hi!', href: `mailto:${email}`, iconType: 'mail' }
+  { type: 'link', label: 'Say Hi!', href: `mailto:${MY_EMAIL}`, iconType: 'mail' }
 ];
 
 export const HeroNavigation = ({ className }: Props) => {

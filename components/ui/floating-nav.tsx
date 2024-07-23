@@ -60,7 +60,7 @@ export const FloatingNav = ({ navItems, externalLinkItems, className }: Floating
             <a
               key={`${name}-${idx}`}
               href={`#${link}`}
-              className={cn('px-8 py-4', isActive ? 'text-tertiary' : 'hover:text-tertiary')}
+              className={cn('px-8 py-4', { 'text-black hover:text-tertiary': !isActive })}
             >
               {name}
             </a>
@@ -69,7 +69,7 @@ export const FloatingNav = ({ navItems, externalLinkItems, className }: Floating
 
         <div className="ml-auto mr-6 flex h-full items-center">
           {externalLinkItems?.map(({ name, icon, link }, idx) => (
-            <a key={`${name}-${idx}`} href={`#${link}`} className="p-2">
+            <a key={`${name}-${idx}`} href={link} className="p-2">
               {icon}
             </a>
           ))}

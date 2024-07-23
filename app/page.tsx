@@ -5,6 +5,7 @@ import { Credits, FloatingNav, IconGitHub, IconLinkedin, IconMail } from '@/comp
 import { About } from './about';
 import { Experience } from './experience';
 import { Hero } from './hero';
+import { MY_EMAIL } from './constants';
 import { Project } from './project';
 import { useEffect } from 'react';
 
@@ -16,8 +17,7 @@ const navItems = [
 ];
 
 const externalLinkItems = [
-  { name: 'Mail', link: 'mail', icon: <IconMail /> },
-  { name: 'Github', link: 'github', icon: <IconGitHub /> },
+  { name: 'Mail', link: `mailto:${MY_EMAIL}`, icon: <IconMail /> },
   { name: 'Linkedin', link: 'linkedin', icon: <IconLinkedin /> }
 ];
 
