@@ -6,14 +6,16 @@ import { About } from './about';
 import { Experience } from './experience';
 import { Hero } from './hero';
 import { MY_EMAIL } from './constants';
-import { Project } from './project';
 import { useEffect } from 'react';
+
+// import { Project } from './project';
+
 
 const navItems = [
   { name: 'Home', link: 'hero', component: Hero },
   { name: 'About', link: 'about', component: About },
-  { name: 'Experience', link: 'experience', component: Experience },
-  { name: 'Project', link: 'project', component: Project }
+  { name: 'Experience', link: 'experience', component: Experience }
+  // { name: 'Project', link: 'project', component: Project }
 ];
 
 const externalLinkItems = [
