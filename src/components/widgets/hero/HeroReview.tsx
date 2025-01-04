@@ -6,7 +6,7 @@ const HeroExperience = () => (
     initial={{ opacity: 0, x: -100 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.5, delay: 0.5 }}
-    className="max-w-80 absolute left-0 ml-16"
+    className="max-w-80 absolute left-16"
   >
     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path

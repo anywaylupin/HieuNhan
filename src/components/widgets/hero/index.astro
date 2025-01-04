@@ -1,13 +1,13 @@
 ---
-import HeroButton from './button';
+import HeroButton from './HeroButton';
+import HeroEclipse from './HeroEclipse';
 import HeroExperience from './HeroExperience';
+import HeroNavigation from './HeroNavigation';
 import HeroReview from './HeroReview';
 import HeroTitle from './HeroTitle';
-import HeroEclipse from './HeroEclipse';
-import HeroNavigation from './HeroNavigation';
 ---
 
-<section id="hero" class="stretch w-section top-0 flex h-screen items-center">
+<section id="hero" class="relative pt-20 stretch size-full top-0 flex h-screen items-center">
   <HeroReview client:load />
   <HeroExperience client:load />
 

@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils';
 import { useState } from 'react';
 
 declare interface Props extends PropsWithClass {

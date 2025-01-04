@@ -4,7 +4,7 @@ import '@/styles/globals.css';
 import Navbar from '@/components/Navbar.astro';
 import Welcome from '@/components/Welcome.astro';
 import Layout from '@/layouts/Layout.astro';
-import Hero from '@/components/widgets/hero/index.astro';
+import { About, Hero } from '@/components/widgets';
 
 const navItems = [
   { name: 'Home', link: 'hero', component: Welcome },
@@ -21,5 +21,8 @@ const externalLinks = [
 
 <Layout>
   <Navbar navItems={navItems} externalLinks={externalLinks} />
-  <Hero />
+  <main class="relative z-20 flex mx-auto max-w-[1440px] size-full select-none flex-col items-center">
+    <Hero />
+    <About />
+  </main>
 </Layout>

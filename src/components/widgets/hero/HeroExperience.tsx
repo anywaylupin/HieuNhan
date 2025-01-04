@@ -5,7 +5,7 @@ const HeroExperience = () => (
     initial={{ opacity: 0, x: 100 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.5, delay: 0.5 }}
-    className="absolute right-0 mr-16"
+    className="absolute right-16"
   >
     <p className="text-end text-primary">
       <span className="text-4xl font-bold">

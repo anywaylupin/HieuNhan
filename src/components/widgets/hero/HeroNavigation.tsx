@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import { IconMail } from '../../icons/mail';
 import { MY_EMAIL } from '@/constants';
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils';
 import { colors } from '@/theme';
 import { useState } from 'react';
 
@@ -26,26 +26,26 @@ const HoverBackground = () => (
   />
 );
 
-const Icon = ({ iconType }: { iconType: string }) =>
+const Icon = ({ iconType, color }: { iconType: string; color: string }) =>
   iconType === 'link' ? (
     <svg className="-mt-1.5" width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M12.25 29.75L29.75 12.25"
-        stroke={colors['primary']}
+        stroke={colors['tertiary']}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M12.25 12.25H29.75V29.75"
-        stroke={colors['primary']}
+        stroke={colors['tertiary']}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
     </svg>
   ) : (
-    <IconMail />
+    <IconMail fill={color} />
   );
 
 const HoverItem = ({ index, type, label, href, hoveredIndex, setHoveredIndex, iconType }: HoverItemProps) => {
@@ -53,7 +53,7 @@ const HoverItem = ({ index, type, label, href, hoveredIndex, setHoveredIndex, ic
   const color = active ? 'tertiary' : 'secondary';
   const colorClass = `text-${color}`;
 
-  const icon = <Icon iconType={iconType} />;
+  const icon = <Icon iconType={iconType} color={colors[color]} />;
 
   return (
     <div
@@ -64,13 +64,13 @@ const HoverItem = ({ index, type, label, href, hoveredIndex, setHoveredIndex, ic
     >
       <AnimatePresence>{active && <HoverBackground />}</AnimatePresence>
       {type === 'button' ? (
-        <button className="relative flex items-center rounded-full p-2.5 px-8 py-4">
+        <button className="relative flex  items-center rounded-full p-2.5 px-8 py-4">
           <span className={cn('font-medium', colorClass)}>{label}</span>
           {icon}
         </button>
       ) : (
-        <a className="relative flex items-center justify-center gap-1 px-8 py-4 font-light" href={href}>
-          <span className={colorClass}>{label}</span>
+        <a className="relative flex items-center justify-center gap-1 px-8 pt-3 pb-4 font-light" href={href}>
+          <span className={cn('text-3xl pt-1', colorClass)}>{label}</span>
           {icon}
         </a>
       )}
