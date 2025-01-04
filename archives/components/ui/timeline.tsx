@@ -39,7 +39,7 @@ export const TimelineItem = ({
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: active ? 1 : 0.3 }}
-        className="text-2xl font-bold text-dark-1"
+        className="text-dark-1 text-2xl font-bold"
       >
         {[title].flat().map((t) => (
           <>
@@ -51,7 +51,7 @@ export const TimelineItem = ({
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: active ? 1 : 0.3 }}
-        className="-mt-6 text-xl font-medium text-dark-2"
+        className="text-dark-2 -mt-6 text-xl font-medium"
       >
         {dateTime}
       </motion.div>
@@ -59,7 +59,7 @@ export const TimelineItem = ({
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: active ? 1 : 0.3 }}
-          className="text-justify text-lg text-dark-2"
+          className="text-dark-2 text-justify text-lg"
         >
           {[description].flat().map((desc) => (
             <>

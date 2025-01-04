@@ -18,7 +18,7 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}): AstroIntegra
         // isRestart,
         logger,
         updateConfig,
-        addWatchFile,
+        addWatchFile
       }) => {
         const buildLogger = logger.fork('astrowind');
 
@@ -54,10 +54,10 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}): AstroIntegra
                     export const ANALYTICS = ${JSON.stringify(ANALYTICS)};
                     `;
                   }
-                },
-              },
-            ],
-          },
+                }
+              }
+            ]
+          }
         });
 
         if (typeof _themeConfig === 'string') {
@@ -97,12 +97,12 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}): AstroIntegra
             if (!pattern.test(robotsTxt)) {
               fs.writeFileSync(robotsTxtFileInOut, `${robotsTxt}${os.EOL}${os.EOL}Sitemap: ${sitemapUrl}`, {
                 encoding: 'utf8',
-                flag: 'w',
+                flag: 'w'
               });
             } else {
               fs.writeFileSync(robotsTxtFileInOut, robotsTxt.replace(pattern, `Sitemap: ${sitemapUrl}`), {
                 encoding: 'utf8',
-                flag: 'w',
+                flag: 'w'
               });
             }
           }
@@ -110,7 +110,7 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}): AstroIntegra
         } catch (error) {
           /* empty */
         }
-      },
-    },
+      }
+    }
   };
 };

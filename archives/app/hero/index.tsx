@@ -10,7 +10,7 @@ export const Hero = ({ id, className }: Props) => {
   const target = useRef<HTMLDivElement | null>(null);
 
   return (
-    <section ref={target} id={id} className={cn('stretch top-0 flex h-screen w-section items-center', className)}>
+    <section ref={target} id={id} className={cn('stretch w-section top-0 flex h-screen items-center', className)}>
       <HeroReview className="absolute left-0 ml-16" />
       <HeroExperience className="absolute right-0 mr-16" />
       <div className="flex size-full flex-col items-center">

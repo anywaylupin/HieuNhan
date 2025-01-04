@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export const Experience = ({ id, className }: Props) => {
   return (
-    <section id={id} className={cn('flex max-h-screen w-section flex-col items-center bg-white px-20', className)}>
+    <section id={id} className={cn('w-section flex max-h-screen flex-col items-center bg-white px-20', className)}>
       <motion.div className="my-20">
         <h2 className="text-6xl text-primary">
           My <span className="text-tertiary">Work Experience</span>

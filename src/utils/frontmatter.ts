@@ -26,9 +26,9 @@ export const responsiveTablesRehypePlugin: RehypePlugin = () => {
           type: 'element',
           tagName: 'div',
           properties: {
-            style: 'overflow:auto',
+            style: 'overflow:auto'
           },
-          children: [child],
+          children: [child]
         };
 
         i++;

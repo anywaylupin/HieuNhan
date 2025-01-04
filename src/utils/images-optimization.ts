@@ -54,10 +54,10 @@ const config = {
     3840, // 4K
     4480, // 4.5K
     5120, // 5K
-    6016, // 6K
+    6016 // 6K
   ],
 
-  formats: ['image/webp'],
+  formats: ['image/webp']
 };
 
 const computeHeight = (width: number, aspectRatio: number) => {
@@ -117,7 +117,7 @@ const getStyle = ({
   layout,
   objectFit = 'cover',
   objectPosition = 'center',
-  background,
+  background
 }: {
   width?: number;
   height?: number;
@@ -129,7 +129,7 @@ const getStyle = ({
 }) => {
   const styleEntries: Array<[prop: string, value: string | undefined]> = [
     ['object-fit', objectFit],
-    ['object-position', objectPosition],
+    ['object-position', objectPosition]
   ];
 
   // If background is a URL, set it to cover the image and not repeat
@@ -182,7 +182,7 @@ const getStyle = ({
 const getBreakpoints = ({
   width,
   breakpoints,
-  layout,
+  layout
 }: {
   width?: number;
   breakpoints?: number[];
@@ -204,7 +204,7 @@ const getBreakpoints = ({
       width,
       doubleWidth,
       // Filter out any resolutions that are larger than the double-res image
-      ...(breakpoints || config.deviceSizes).filter((w) => w < doubleWidth),
+      ...(breakpoints || config.deviceSizes).filter((w) => w < doubleWidth)
     ];
   }
 
@@ -230,7 +230,7 @@ export const astroAsseetsOptimizer: ImagesOptimizer = async (
       return {
         src: result?.src,
         width: result?.attributes?.width ?? w,
-        height: result?.attributes?.height,
+        height: result?.attributes?.height
       };
     })
   );
@@ -260,12 +260,12 @@ export const unpicOptimizer: ImagesOptimizer = async (image, breakpoints, width,
           width: w,
           height: _height,
           cdn: urlParsed.cdn,
-          ...(format ? { format: format } : {}),
+          ...(format ? { format: format } : {})
         }) || image;
       return {
         src: String(url),
         width: w,
-        height: _height,
+        height: _height
       };
     })
   );
@@ -343,9 +343,9 @@ export async function getImagesOptimized(
         height: height,
         aspectRatio: aspectRatio,
         objectPosition: objectPosition,
-        layout: layout,
+        layout: layout
       })}${style ?? ''}`,
-      ...rest,
-    },
+      ...rest
+    }
   };
 }

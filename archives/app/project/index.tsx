@@ -52,7 +52,7 @@ export const Project = ({ id, className }: Props) => (
   <section
     id={id}
     className={cn(
-      'flex max-h-screen w-section cursor-pointer flex-col items-center rounded-bl-3xl rounded-br-3xl bg-white px-20 pb-40',
+      'w-section flex max-h-screen cursor-pointer flex-col items-center rounded-bl-3xl rounded-br-3xl bg-white px-20 pb-40',
       className
     )}
   >

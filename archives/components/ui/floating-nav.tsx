@@ -60,7 +60,7 @@ export const FloatingNav = ({ navItems, externalLinkItems, className }: Floating
             <a
               key={`${name}-${idx}`}
               href={`#${link}`}
-              className={cn('px-8 py-4', { 'text-black hover:text-tertiary': !isActive })}
+              className={cn('px-8 py-4', { 'hover:text-tertiary text-black': !isActive })}
             >
               {name}
             </a>

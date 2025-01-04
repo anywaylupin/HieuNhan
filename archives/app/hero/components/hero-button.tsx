@@ -20,7 +20,7 @@ export const HeroButton = ({ className }: Props) => {
         onHoverChange={setHovering}
       >
         <a
-          className="flex w-full gap-1 rounded-full border border-black bg-white px-4 py-2.5 text-center text-xl font-medium text-primary transition duration-200 hover:shadow-sketch"
+          className="hover:shadow-sketch flex w-full gap-1 rounded-full border border-black bg-white px-4 py-2.5 text-center text-xl font-medium text-primary transition duration-200"
           href="#about"
         >
           {hovering ? (

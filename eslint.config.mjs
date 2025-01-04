@@ -13,9 +13,9 @@ export default [
     languageOptions: {
       globals: {
         ...globals.browser,
-        ...globals.node,
-      },
-    },
+        ...globals.node
+      }
+    }
   },
   {
     files: ['**/*.astro'],
@@ -23,22 +23,22 @@ export default [
       parser: astroEslintParser,
       parserOptions: {
         parser: '@typescript-eslint/parser',
-        extraFileExtensions: ['.astro'],
-      },
-    },
+        extraFileExtensions: ['.astro']
+      }
+    }
   },
   {
     files: ['**/*.{js,jsx,astro}'],
     rules: {
-      'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
-    },
+      'no-mixed-spaces-and-tabs': ['error', 'smart-tabs']
+    }
   },
   {
     // Define the configuration for `<script>` tag.
     // Script in `<script>` is assigned a virtual file name with the `.js` extension.
     files: ['**/*.{ts,tsx}', '**/*.astro/*.js'],
     languageOptions: {
-      parser: typescriptParser,
+      parser: typescriptParser
     },
     rules: {
       // Note: you must disable the base rule as it can report incorrect errors
@@ -47,13 +47,13 @@ export default [
         'error',
         {
           argsIgnorePattern: '^_',
-          destructuredArrayIgnorePattern: '^_',
-        },
+          destructuredArrayIgnorePattern: '^_'
+        }
       ],
-      '@typescript-eslint/no-non-null-assertion': 'off',
-    },
+      '@typescript-eslint/no-non-null-assertion': 'off'
+    }
   },
   {
-    ignores: ['dist', 'node_modules', '.github', 'types.generated.d.ts', '.astro'],
-  },
+    ignores: ['dist', 'node_modules', '.github', 'types.generated.d.ts', '.astro']
+  }
 ];

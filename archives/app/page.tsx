@@ -10,7 +10,6 @@ import { useEffect } from 'react';
 
 // import { Project } from './project';
 
-
 const navItems = [
   { name: 'Home', link: 'hero', component: Hero },
   { name: 'About', link: 'about', component: About },

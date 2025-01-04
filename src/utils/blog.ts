@@ -9,7 +9,7 @@ const generatePermalink = async ({
   id,
   slug,
   publishDate,
-  category,
+  category
 }: {
   id: string;
   slug: string;
@@ -54,7 +54,7 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     category: rawCategory,
     author,
     draft = false,
-    metadata = {},
+    metadata = {}
   } = data;
 
   const slug = cleanSlug(id); // cleanSlug(rawSlug.split('/').pop());
@@ -64,13 +64,13 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
   const category = rawCategory
     ? {
         slug: cleanSlug(rawCategory),
-        title: rawCategory,
+        title: rawCategory
       }
     : undefined;
 
   const tags = rawTags.map((tag: string) => ({
     slug: cleanSlug(tag),
-    title: tag,
+    title: tag
   }));
 
   return {
@@ -96,7 +96,7 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     Content: Content,
     // or 'content' in case you consume from API
 
-    readingTime: remarkPluginFrontmatter?.readingTime,
+    readingTime: remarkPluginFrontmatter?.readingTime
   };
 };
 
@@ -178,7 +178,7 @@ export const getStaticPathsBlogList = async ({ paginate }: { paginate: PaginateF
   if (!isBlogEnabled || !isBlogListRouteEnabled) return [];
   return paginate(await fetchPosts(), {
     params: { blog: BLOG_BASE || undefined },
-    pageSize: blogPostsPerPage,
+    pageSize: blogPostsPerPage
   });
 };
 
@@ -187,9 +187,9 @@ export const getStaticPathsBlogPost = async () => {
   if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
   return (await fetchPosts()).flatMap((post) => ({
     params: {
-      blog: post.permalink,
+      blog: post.permalink
     },
-    props: { post },
+    props: { post }
   }));
 };
 
@@ -211,7 +211,7 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
       {
         params: { category: categorySlug, blog: CATEGORY_BASE || undefined },
         pageSize: blogPostsPerPage,
-        props: { category: categories[categorySlug] },
+        props: { category: categories[categorySlug] }
       }
     )
   );
@@ -237,7 +237,7 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
       {
         params: { tag: tagSlug, blog: TAG_BASE || undefined },
         pageSize: blogPostsPerPage,
-        props: { tag: tags[tagSlug] },
+        props: { tag: tags[tagSlug] }
       }
     )
   );

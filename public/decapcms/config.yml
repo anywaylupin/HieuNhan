@@ -21,7 +21,7 @@ collections:
           allow_add: true,
           allow_delete: true,
           collapsed: false,
-          field: { label: 'Tag', name: 'tag', widget: 'string' },
+          field: { label: 'Tag', name: 'tag', widget: 'string' }
         }
       - { label: 'Image', name: 'image', widget: 'string' }
       - { label: 'Publish Date', name: 'publishDate', widget: 'datetime', required: false }

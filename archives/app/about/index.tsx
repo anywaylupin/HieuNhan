@@ -9,7 +9,7 @@ export const About = ({ id, className }: Props) => (
   <section
     id={id}
     className={cn(
-      'min-h-section flex w-section items-center gap-8 rounded-tl-3xl rounded-tr-3xl bg-white px-20',
+      'min-h-section w-section flex items-center gap-8 rounded-tl-3xl rounded-tr-3xl bg-white px-20',
       className
     )}
   >

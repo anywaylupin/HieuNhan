@@ -26,7 +26,7 @@ export default defineConfig({
 
   integrations: [
     tailwind({
-      applyBaseStyles: false,
+      applyBaseStyles: false
     }),
     sitemap(),
     mdx(),
@@ -42,14 +42,14 @@ export default defineConfig({
           'currency-exchange',
           'voice-presentation',
           'business-contact',
-          'database',
-        ],
-      },
+          'database'
+        ]
+      }
     }),
 
     ...whenExternalScripts(() =>
       partytown({
-        config: { forward: ['dataLayer.push'] },
+        config: { forward: ['dataLayer.push'] }
       })
     ),
 
@@ -57,34 +57,34 @@ export default defineConfig({
       CSS: true,
       HTML: {
         'html-minifier-terser': {
-          removeAttributeQuotes: false,
-        },
+          removeAttributeQuotes: false
+        }
       },
       Image: false,
       JavaScript: true,
       SVG: false,
-      Logger: 1,
+      Logger: 1
     }),
 
     astrowind({
-      config: './src/config.yaml',
-    }),
+      config: './src/config.yaml'
+    })
   ],
 
   image: {
-    domains: ['cdn.pixabay.com'],
+    domains: ['cdn.pixabay.com']
   },
 
   markdown: {
     remarkPlugins: [readingTimeRemarkPlugin],
-    rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
+    rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin]
   },
 
   vite: {
     resolve: {
       alias: {
-        '~': path.resolve(__dirname, './src'),
-      },
-    },
-  },
+        '~': path.resolve(__dirname, './src')
+      }
+    }
+  }
 });

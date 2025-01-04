@@ -67,7 +67,7 @@ export const adaptOpenGraphImages = async (
         const resolvedImage = (await findImage(image.url)) as ImageMetadata | string | undefined;
         if (!resolvedImage) {
           return {
-            url: '',
+            url: ''
           };
         }
 
@@ -93,16 +93,16 @@ export const adaptOpenGraphImages = async (
           return {
             url: 'src' in _image && typeof _image.src === 'string' ? String(new URL(_image.src, astroSite)) : '',
             width: 'width' in _image && typeof _image.width === 'number' ? _image.width : undefined,
-            height: 'height' in _image && typeof _image.height === 'number' ? _image.height : undefined,
+            height: 'height' in _image && typeof _image.height === 'number' ? _image.height : undefined
           };
         }
         return {
-          url: '',
+          url: ''
         };
       }
 
       return {
-        url: '',
+        url: ''
       };
     })
   );
