@@ -1,0 +1,69 @@
+---
+import type { JSX } from 'astro/jsx-runtime';
+
+interface NavbarItem {
+  name: string;
+  link: string;
+  icon?: JSX.Element;
+  component?: JSX.Element | ((...args: any[]) => JSX.Element);
+}
+
+interface Props {
+  navItems: NavbarItem[];
+  externalLinks?: NavbarItem[];
+  class?: string;
+}
+
+const { navItems, externalLinks, class: className } = Astro.props;
+
+// const handleScroll = () => {
+//   const sections = navItems.map((item) => document.getElementById(item.link));
+//   let activeSection: string | null = null;
+
+//   sections.forEach((section) => {
+//     const rect = section?.getBoundingClientRect();
+//     if (rect && rect.top >= 0 && rect.top <= window.innerHeight * 0.6) {
+//       activeSection = section.id;
+//     }
+//   });
+
+//   const navLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-link');
+//   navLinks.forEach((link) => {
+//     if (link.getAttribute('href') === `#${activeSection}`) {
+//       link.classList.add('active');
+//     } else {
+//       link.classList.remove('active');
+//     }
+//   });
+// };
+
+// window.addEventListener('scroll', handleScroll);
+---
+
+<style>
+  .nav-link.active {
+    color: black;
+  }
+</style>
+
+<nav
+  class={`fixed inset-x-0 top-0 z-40 flex w-full bg-white p-2.5 text-xl transform transition-transform duration-500 ${className || ''}`}
+>
+  {
+    navItems.map(({ name, link }) => (
+      <a href={`#${link}`} class="nav-link px-8 py-4 transition hover:text-tertiary">
+        {name}
+      </a>
+    ))
+  }
+
+  <div class="ml-auto mr-6 flex h-full items-center">
+    {
+      externalLinks?.map(({ icon, link }) => (
+        <a href={link} class="p-2">
+          {icon}
+        </a>
+      ))
+    }
+  </div>
+</nav>
