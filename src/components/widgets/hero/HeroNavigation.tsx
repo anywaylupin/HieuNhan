@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { IconMail } from '../../icons/mail';
 import { MY_EMAIL } from '@/constants';
 import { cn } from '@/utils';
 import { colors } from '@/theme';
@@ -26,7 +25,7 @@ const HoverBackground = () => (
   />
 );
 
-const Icon = ({ iconType, color }: { iconType: string; color: string }) =>
+const NavIcon = ({ iconType, color }: { iconType: string; color: string }) =>
   iconType === 'link' ? (
     <svg className="-mt-1.5" width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -45,7 +44,9 @@ const Icon = ({ iconType, color }: { iconType: string; color: string }) =>
       />
     </svg>
   ) : (
-    <IconMail fill={color} />
+    <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill={color}>
+      <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" />
+    </svg>
   );
 
 const HoverItem = ({ index, type, label, href, hoveredIndex, setHoveredIndex, iconType }: HoverItemProps) => {
@@ -53,7 +54,7 @@ const HoverItem = ({ index, type, label, href, hoveredIndex, setHoveredIndex, ic
   const color = active ? 'tertiary' : 'secondary';
   const colorClass = `text-${color}`;
 
-  const icon = <Icon iconType={iconType} color={colors[color]} />;
+  const icon = <NavIcon iconType={iconType} color={colors[color]} />;
 
   return (
     <div

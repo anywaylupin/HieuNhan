@@ -21,7 +21,7 @@ const HeroEclipse = () => (
       transition={{ duration: 0.5, ease: [0.4, 0.0, 0.2, 1] }}
       className="absolute -bottom-4 max-w-[400px]"
     >
-      <img src="/me.png" alt="Me" />
+      <img src="/images/me.png" alt="Me" />
     </motion.div>
   </div>
 );

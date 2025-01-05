@@ -1,28 +1,30 @@
 ---
 import '@/styles/globals.css';
 
-import Navbar from '@/components/Navbar.astro';
-import Welcome from '@/components/Welcome.astro';
+import { Navbar } from '@/components/ui';
 import Layout from '@/layouts/Layout.astro';
-import { About, Hero } from '@/components/widgets';
-
-const navItems = [
-  { name: 'Home', link: 'hero', component: Welcome },
-  { name: 'About', link: 'about', component: Welcome },
-  { name: 'Experience', link: 'experience', component: Welcome }
-  // { name: 'Project', link: 'project', component: Project }
-];
-
-const externalLinks = [
-  { name: 'Mail', link: `mailto:${'nhansocok@gmail.com'}` },
-  { name: 'Linkedin', link: 'linkedin' }
-];
+import { About, Experience, Hero } from '@/components/widgets';
 ---
 
 <Layout>
-  <Navbar navItems={navItems} externalLinks={externalLinks} />
+  <Navbar client:load />
+
   <main class="relative z-20 flex mx-auto max-w-[1440px] size-full select-none flex-col items-center">
     <Hero />
     <About />
+    <Experience />
   </main>
+
+  <footer id="credits">
+    <div class="py-10 text-center text-2xl">
+      <span>Built by </span>
+      <a
+        href="https://github.com/anywaylupin"
+        target="_blank"
+        class="bg-gradient-to-br from-green-500 to-cyan-500 bg-clip-text font-bold text-transparent"
+      >
+        anywaylupin
+      </a>
+    </div>
+  </footer>
 </Layout>
