@@ -39,17 +39,19 @@ export default function JobList() {
     >
       <div className="relative flex w-full max-w-4xl items-start">
         <div className="size-full max-h-full pb-96">
-          {content.map(({ title, description, dateTime, icon }, index) => (
-            <TimelineItem
-              key={`${title}-${index}`}
-              active={activeCard === index}
-              title={title}
-              description={description}
-              dateTime={dateTime?.toUpperCase()}
-              icon={icon}
-              baseColor={linearGradients[index % linearGradients.length]}
-            />
-          ))}
+          {content.map(({ id, title, description, dateTime, icon }, index) => {
+            return (
+              <TimelineItem
+                key={id}
+                active={activeCard === index}
+                title={title}
+                description={description}
+                dateTime={dateTime?.toUpperCase()}
+                icon={icon}
+                baseColor={linearGradients[index % linearGradients.length]}
+              />
+            );
+          })}
         </div>
       </div>
       <div

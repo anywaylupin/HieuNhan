@@ -8,6 +8,7 @@ import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://hieunhan.vercel.app',
   integrations: [icon(), mdx(), react(), tailwind({ applyBaseStyles: false })],
   adapter: vercel()
 });

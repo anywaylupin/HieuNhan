@@ -6,6 +6,7 @@ export interface StickyScrollContent extends TimelineItemProps {
 
 export const content: StickyScrollContent[] = [
   {
+    id: '1',
     icon: (
       <div className="size-full">
         <img src="/images/fulbright-logo.jpeg" width="64" height="64" alt="Social Impact Catalyst" />
@@ -58,6 +59,7 @@ export const content: StickyScrollContent[] = [
     )
   },
   {
+    id: '2',
     icon: <img src="/images/sic-logo.png" width="32" height="32" alt="Social Impact Catalyst" />,
     title: (
       <p>
@@ -102,6 +104,7 @@ export const content: StickyScrollContent[] = [
     )
   },
   {
+    id: '3',
     icon: (
       <div className="size-full">
         <img src="/images/fulbright-logo.jpeg" width="64" height="64" alt="Social Impact Catalyst" />
@@ -155,6 +158,7 @@ export const content: StickyScrollContent[] = [
     )
   },
   {
+    id: '4',
     icon: (
       <div className="size-full">
         <img src="/images/fulbright-logo.jpeg" width="64" height="64" alt="Social Impact Catalyst" />
@@ -205,6 +209,7 @@ export const content: StickyScrollContent[] = [
     )
   },
   {
+    id: '5',
     icon: (
       <div className="size-full">
         <img src="/images/fbc-logo.jpg" width="64" height="64" alt="Social Impact Catalyst" />

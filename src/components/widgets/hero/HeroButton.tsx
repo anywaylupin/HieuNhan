@@ -5,6 +5,10 @@ import { useState } from 'react';
 export default function Button() {
   const [hovering, setHovering] = useState(false);
 
+  const messages = ['Hi', 'Hello', 'Howdy', 'Hey there'];
+
+  const randomMessage = () => messages[Math.floor(Math.random() * messages.length)];
+
   return (
     <motion.div
       initial={{ scale: 0, y: 20 }}
@@ -13,13 +17,13 @@ export default function Button() {
       className="mt-[10vh]"
     >
       <AnimatedTooltip
-        label="Hi There!"
+        label={randomMessage()}
         designation="Thanks for viewing my portfolio"
         className="z-50 min-w-36"
         onHoverChange={setHovering}
       >
         <a
-          className="hover:shadow-sketch flex w-full gap-1 rounded-full border border-black bg-white px-4 py-2.5 text-center text-xl font-medium text-primary transition duration-200"
+          className="flex w-full gap-1 rounded-full border border-black bg-white px-4 py-2.5 text-center text-xl font-medium text-primary transition duration-200 hover:shadow-sketch"
           href="#about"
         >
           {hovering ? (

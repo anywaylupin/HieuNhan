@@ -1,24 +1,9 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { IconGitHub, IconLinkedin, IconMail } from '@/components/icons';
 import { useEffect, useRef, useState } from 'react';
 
 import { cn } from '@/utils/cn';
-
-const externalLinks = [
-  { name: 'Mail', link: `mailto:${'nhansocok@gmail.com'}`, icon: IconMail },
-  {
-    name: 'Linkedin',
-    link: 'https://www.linkedin.com/in/hieunhannguyen/',
-    icon: IconLinkedin
-  },
-  {
-    name: 'GitHub',
-    link: 'https://github.com/anywaylupin/HieuNhan',
-    icon: IconGitHub
-  }
-];
 
 export const Navbar = ({ className, navItems }: PropsWithClass<{ navItems: { name: string; link: string }[] }>) => {
   const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -56,7 +41,7 @@ export const Navbar = ({ className, navItems }: PropsWithClass<{ navItems: { nam
         initial={{ y: -150 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={cn('fixed inset-x-0 z-40 mx-auto flex w-full items-center bg-white p-2.5 text-xl', className)}
+        className={cn('flex w-full', className)}
       >
         {navItems.map(({ name, link }, idx: number) => {
           const isActive = activeSection === link;
@@ -73,14 +58,6 @@ export const Navbar = ({ className, navItems }: PropsWithClass<{ navItems: { nam
             </a>
           );
         })}
-
-        <div className="ml-auto mr-6 flex h-full items-center">
-          {externalLinks?.map(({ name, icon: Icon, link }, idx) => (
-            <a key={`${name}-${idx}`} href={link} target={link.startsWith('mailto') ? '' : '_blank'} className="p-2">
-              <Icon className="transition hover:text-tertiary" />
-            </a>
-          ))}
-        </div>
       </motion.nav>
     </AnimatePresence>
   );
