@@ -1,35 +1,33 @@
 ---
-import { cn } from "@/utils";
+import { cn } from '@/utils';
 
-declare type AboutText = Readonly<
-  Array<{ text: string; type: "highlight" | "normal" }>
->;
+declare type AboutText = Readonly<Array<{ text: string; type: 'highlight' | 'normal' }>>;
 
 export const content: AboutText = [
   {
     text: "My ultimate goal is to create a societal impact as a way to give back for what I've received.",
-    type: "highlight",
+    type: 'highlight'
   },
   {
-    text: "I am enthusiastic about challenging myself through a variety of work experiences and am open to different fields to learn and develop my skills.",
-    type: "normal",
+    text: 'I am enthusiastic about challenging myself through a variety of work experiences and am open to different fields to learn and develop my skills.',
+    type: 'normal'
   },
   {
-    text: "Being a young woman living in a complex and rapidly changing world, I adopted the mission of contributing to the development and closing the gap of inequality among people.",
-    type: "highlight",
+    text: 'Being a young woman living in a complex and rapidly changing world, I adopted the mission of contributing to the development and closing the gap of inequality among people.',
+    type: 'highlight'
   },
   {
-    text: "To achieve that mission, I urged myself to involve myself in experiencing knowledge and improving my skillset, and mindset in Sustainability Development. ",
-    type: "normal",
-  },
+    text: 'To achieve that mission, I urged myself to involve myself in experiencing knowledge and improving my skillset, and mindset in Sustainability Development. ',
+    type: 'normal'
+  }
 ];
 ---
 
 <section
   id="about"
-  class="min-h-[40rem] w-full flex items-center gap-8 rounded-tl-3xl rounded-tr-3xl bg-white top-10 px-20 pt-20"
+  class="top-10 flex min-h-[40rem] w-full items-center gap-8 rounded-tl-3xl rounded-tr-3xl bg-white px-20 pt-20"
 >
-  <div class="flex flex-col max-w-[60%] justify-between gap-8">
+  <div class="flex max-w-[60%] flex-col justify-between gap-8">
     <h2 class="w-full text-start text-5xl">About Me</h2>
 
     <div class="flex">
@@ -44,10 +42,8 @@ export const content: AboutText = [
         content.map(({ text, type }) => (
           <p
             class={cn(
-              "py-2 text-justify",
-              type === "highlight"
-                ? "bg-tertiary font-semibold text-secondary"
-                : "text-dark-2",
+              'py-2 text-justify',
+              type === 'highlight' ? 'bg-tertiary font-semibold text-secondary' : 'text-dark-2'
             )}
           >
             {text}
@@ -57,13 +53,7 @@ export const content: AboutText = [
     </div>
   </div>
 
-  <div
-    class="relative flex-1 rounded-xl border border-black/[0.1] bg-gray-50 p-6 mt-4"
-  >
-    <img
-      src="/images/about-me.png"
-      class="w-full rounded-xl object-cover"
-      alt="Avatar"
-    />
+  <div class="relative mt-4 flex-1 rounded-xl border border-black/[0.1] bg-gray-50 p-6">
+    <img src="/images/about-me.png" class="w-full rounded-xl object-cover" alt="Avatar" />
   </div>
 </section>

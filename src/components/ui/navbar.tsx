@@ -7,16 +7,24 @@ import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/utils/cn';
 
 const navItems = [
-  { name: 'Home', link: 'hero' },
-  { name: 'About', link: 'about' },
-  { name: 'Experience', link: 'experience' }
-  // { name: 'Project', link: 'project', }
+  { name: 'Home', link: '/#hero' },
+  { name: 'About', link: '/#about' },
+  { name: 'Experience', link: '/#experience' },
+  { name: 'Blog', link: '/blog' }
 ];
 
 const externalLinks = [
   { name: 'Mail', link: `mailto:${'nhansocok@gmail.com'}`, icon: IconMail },
-  { name: 'Linkedin', link: 'https://www.linkedin.com/in/hieunhannguyen/', icon: IconLinkedin },
-  { name: 'GitHub', link: 'https://github.com/anywaylupin/HieuNhan', icon: IconGitHub }
+  {
+    name: 'Linkedin',
+    link: 'https://www.linkedin.com/in/hieunhannguyen/',
+    icon: IconLinkedin
+  },
+  {
+    name: 'GitHub',
+    link: 'https://github.com/anywaylupin/HieuNhan',
+    icon: IconGitHub
+  }
 ];
 
 export const Navbar = ({ className }: PropsWithClass) => {
@@ -63,8 +71,10 @@ export const Navbar = ({ className }: PropsWithClass) => {
           return (
             <a
               key={`${name}-${idx}`}
-              href={`#${link}`}
-              className={cn('px-8 py-4 hover:text-tertiary transition', { ' text-tertiary': isActive })}
+              href={`${link}`}
+              className={cn('px-8 py-4 transition hover:text-tertiary', {
+                'text-tertiary': isActive
+              })}
             >
               {name}
             </a>
@@ -74,7 +84,7 @@ export const Navbar = ({ className }: PropsWithClass) => {
         <div className="ml-auto mr-6 flex h-full items-center">
           {externalLinks?.map(({ name, icon: Icon, link }, idx) => (
             <a key={`${name}-${idx}`} href={link} target={link.startsWith('mailto') ? '' : '_blank'} className="p-2">
-              <Icon className="hover:text-tertiary transition" />
+              <Icon className="transition hover:text-tertiary" />
             </a>
           ))}
         </div>
