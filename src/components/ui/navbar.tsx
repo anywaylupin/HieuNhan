@@ -6,13 +6,6 @@ import { useEffect, useRef, useState } from 'react';
 
 import { cn } from '@/utils/cn';
 
-const navItems = [
-  { name: 'Home', link: '/#hero' },
-  { name: 'About', link: '/#about' },
-  { name: 'Experience', link: '/#experience' },
-  { name: 'Blog', link: '/blog' }
-];
-
 const externalLinks = [
   { name: 'Mail', link: `mailto:${'nhansocok@gmail.com'}`, icon: IconMail },
   {
@@ -27,7 +20,7 @@ const externalLinks = [
   }
 ];
 
-export const Navbar = ({ className }: PropsWithClass) => {
+export const Navbar = ({ className, navItems }: PropsWithClass<{ navItems: { name: string; link: string }[] }>) => {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const sectionRefs = useRef<{ [key: string]: HTMLElement }>({});
 

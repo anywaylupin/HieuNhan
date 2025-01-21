@@ -1,13 +1,9 @@
 ---
-import '@/styles/globals.css';
-import { Navbar } from '@/components/ui';
-import Layout from '@/layouts/Layout.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
 ---
 
-<Layout>
-  <Navbar client:load />
-
-  <main class="relative z-20 mx-auto flex size-full max-w-[1440px] select-none flex-col items-center">
+<BaseLayout>
+  <main class="relative z-20 mx-auto flex size-full max-w-[1440px] flex-1 select-none flex-col items-center pt-20">
     <h1>My Astro Learning Blog</h1>
     <p>This is where I will post about my journey learning Astro.</p>
     <ul>
@@ -16,4 +12,4 @@ import Layout from '@/layouts/Layout.astro';
       <li><a href="/posts/post-3/">Post 3</a></li>
     </ul>
   </main>
-</Layout>
+</BaseLayout>

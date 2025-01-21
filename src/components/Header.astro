@@ -1,0 +1,12 @@
+---
+import { Navbar } from './ui';
+
+const navItems = [
+  { name: 'Home', link: '/#hero' },
+  { name: 'About', link: '/#about' },
+  { name: 'Experience', link: '/#experience' },
+  { name: 'Blog', link: '/blog' }
+];
+---
+
+<Navbar navItems={navItems} client:load />
