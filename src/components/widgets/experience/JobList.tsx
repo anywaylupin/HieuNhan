@@ -6,7 +6,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { TimelineItem } from '@/components/ui';
 import { content } from './content';
 
-const JobList = () => {
+export default function JobList() {
   const [activeCard, setActiveCard] = useState(0);
   const ref = useRef<any>(null);
   const { scrollYProgress } = useScroll({ container: ref, offset: ['start start', 'end start'] });
@@ -60,6 +60,4 @@ const JobList = () => {
       </div>
     </motion.div>
   );
-};
-
-export default JobList;
+}

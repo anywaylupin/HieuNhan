@@ -1,15 +1,17 @@
 ---
-import '@/styles/globals.css';
+import "@/styles/globals.css";
 
-import { Navbar } from '@/components/ui';
-import Layout from '@/layouts/Layout.astro';
-import { About, Experience, Hero } from '@/components/widgets';
+import { Navbar } from "@/components/ui";
+import Layout from "@/layouts/Layout.astro";
+import { About, Experience, Hero } from "@/components/widgets";
 ---
 
 <Layout>
   <Navbar client:load />
 
-  <main class="relative z-20 flex mx-auto max-w-[1440px] size-full select-none flex-col items-center">
+  <main
+    class="relative z-20 flex mx-auto max-w-[1440px] size-full select-none flex-col items-center"
+  >
     <Hero />
     <About />
     <Experience />

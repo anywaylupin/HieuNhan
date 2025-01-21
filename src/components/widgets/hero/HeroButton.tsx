@@ -2,7 +2,7 @@ import { AnimatedTooltip } from '../../ui/animated-tooltip';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
-const Button = () => {
+export default function Button() {
   const [hovering, setHovering] = useState(false);
 
   return (
@@ -55,6 +55,4 @@ const Button = () => {
       </AnimatedTooltip>
     </motion.div>
   );
-};
-
-export default Button;
+}

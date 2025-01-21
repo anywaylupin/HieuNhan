@@ -84,7 +84,7 @@ const items = [
   { type: 'link', label: 'Say Hi!', href: `mailto:${MY_EMAIL}`, iconType: 'mail' }
 ];
 
-const Navigation = () => {
+export default function Navigation() {
   const [hoveredIndex, setHoveredIndex] = useState(0);
 
   return (
@@ -108,6 +108,4 @@ const Navigation = () => {
       </div>
     </motion.div>
   );
-};
-
-export default Navigation;
+}

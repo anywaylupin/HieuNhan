@@ -4,8 +4,10 @@ import icon from 'astro-icon';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [icon(), mdx(), react(), tailwind({ applyBaseStyles: false })]
+  integrations: [icon(), mdx(), react(), tailwind({ applyBaseStyles: false })],
+  adapter: vercel()
 });
