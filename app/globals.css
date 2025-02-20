@@ -1,0 +1,10 @@
+@import 'tailwindcss';
+@plugin "tailwindcss-animate";
+
+html {
+  cursor: default;
+}
+
+img {
+  object-fit: contain;
+}
