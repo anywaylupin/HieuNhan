@@ -1,6 +1,6 @@
 'use client';
 
-import content from '@/content';
+import content from '@/content/resume';
 
 import { FloatingDock } from '../ui';
 import { ThemeSwitch } from 'nextra-theme-blog';

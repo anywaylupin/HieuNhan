@@ -8,3 +8,9 @@ html {
 img {
   object-fit: contain;
 }
+
+ul,
+li,
+ol {
+  list-style-type: none;
+}

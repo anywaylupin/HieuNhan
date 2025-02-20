@@ -1,4 +1,4 @@
-import content from '@/content';
+import content from '@/content/resume';
 import { BLUR_FADE_DELAY } from '@/lib/constants';
 import { getRandom } from '@/lib/utils';
 

@@ -1,6 +1,6 @@
 import { ExperienceCards, Header, ProjectCards } from '@/components/common';
 import { Badge, BlurFade } from '@/components/ui';
-import content from '@/content';
+import content from '@/content/resume';
 import { BLUR_FADE_DELAY } from '@/lib/constants';
 
 const Home = () => (

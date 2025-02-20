@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import content from '@/content';
+import content from '@/content/resume';
 
 import { IconBrandGithub, IconWorld } from '../icons';
 import { HoverBorderGradient } from '../ui';
