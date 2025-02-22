@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 type Props = React.HTMLAttributes<HTMLDivElement>;
 
 const Card = forwardRef<HTMLDivElement, Props>(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn('border border-border bg-background text-primary', className)} {...props} />
+  <div ref={ref} className={cn('border-border bg-background text-primary border', className)} {...props} />
 ));
 Card.displayName = 'Card';
 
@@ -15,12 +15,12 @@ const CardHeader = forwardRef<HTMLDivElement, Props>(({ className, ...props }, r
 CardHeader.displayName = 'CardHeader';
 
 const CardTitle = forwardRef<HTMLDivElement, Props>(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn('font-semibold leading-none tracking-tight', className)} {...props} />
+  <div ref={ref} className={cn('leading-none font-semibold tracking-tight', className)} {...props} />
 ));
 CardTitle.displayName = 'CardTitle';
 
 const CardDescription = forwardRef<HTMLDivElement, Props>(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn('text-sm text-muted', className)} {...props} />
+  <div ref={ref} className={cn('text-muted text-sm', className)} {...props} />
 ));
 CardDescription.displayName = 'CardDescription';
 

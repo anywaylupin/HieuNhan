@@ -1,12 +1,13 @@
 import 'nextra-theme-blog/style.css';
 import './globals.css';
 
-import { Head } from 'nextra/components';
-import { Footer, Layout, Navbar, ThemeSwitch } from 'nextra-theme-blog';
-import { Geist, Geist_Mono } from 'next/font/google';
-
 import type { Metadata } from 'next';
-import { getPageMap } from 'nextra/page-map';
+import { Geist, Geist_Mono } from 'next/font/google';
+import { Head } from 'nextra/components';
+
+import { Navbar } from '@/components/common';
+import { ThemeProvider } from '@/components/theme-provider';
+import { cn } from '@/lib/utils';
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'], display: 'swap' });
 
@@ -20,29 +21,20 @@ export const metadata: Metadata = {
 const RootLayout = async ({ children }: React.PropsWithChildren) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Head backgroundColor={{ dark: '#0f172a', light: '#fefce8' }} />
+      <Head />
 
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Layout>
-          <Navbar pageMap={await getPageMap()}>
-            <ThemeSwitch />
-          </Navbar>
-
+      <body
+        className={cn(
+          'bg-background text-primary flex min-h-screen flex-col items-center gap-10 antialiased transition',
+          geistMono.variable,
+          geistSans.variable,
+          geistSans.className
+        )}
+      >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Navbar />
           {children}
-
-          <Footer>
-            <abbr
-              title="This site and all its content are licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
-              style={{ cursor: 'help' }}
-            >
-              CC BY-NC 4.0
-            </abbr>{' '}
-            {new Date().getFullYear()} © Dimitri POSTOLOV.
-            <a href="/feed.xml" style={{ float: 'right' }}>
-              RSS
-            </a>
-          </Footer>
-        </Layout>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,41 +1,40 @@
-import { IconArticle, IconBrandGithub, IconBrandLinkedin, IconHome, IconMail, IconWorld } from '@/components/icons';
+import { IconArticle, IconBrandGithub, IconBrandLinkedin, IconHome, IconMail } from '@/components/icons';
 
 const resume = {
   name: 'Nhân',
   shortname: 'Nhân Nguyễn',
-  fullname: 'Nguyễn Chơn Trọng Nhân',
-  initials: 'NCTN',
-  domain: 'https://anywaylupin.vercel.app',
-  greetings: ['Hi', 'Hello', 'Howdy', 'Hey'],
-  description:
-    "Conjuring magic through code. Currently thriving as a Frontend Developer at TotallyAwesome, I'm on a part-time journey to become a master problem-solver.",
+  fullname: 'Nguyễn Thị Hiếu Nhân',
+  initials: 'NTHN',
+  domain: 'https://hieunhan.vercel.app',
+  avatar: '/images/me.png',
+  greetings: (
+    <p className="text-2xl">
+      <b>Hello, I&apos;m Hiếu Nhân,</b> <br />
+      <span>
+        A senior Economics major at <b>Fulbright University Vietnam.</b>
+      </span>
+    </p>
+  ),
   about:
-    "Hello! I'm Lupin—a dedicated problem-solver who thrives in collaborative settings. My childhood dream of becoming a Robotics engineer still inspires me. I am fascinated by the potential of robots and AI to address challenges in our lives. With a growing expertise in coding and computer science, I aim to develop innovative solutions. I also enjoy sports, music, and gaming, which keep me balanced and motivated.",
+    "My ultimate goal is to create a societal impact as a way to give back for what I've received. I am enthusiastic about challenging myself through a variety of work experiences and am open to different fields to learn and develop my skills. Being a young woman living in a complex and rapidly changing world, I adopted the mission of contributing to the development and closing the gap of inequality among people. To achieve that mission, I urged myself to involve myself in experiencing knowledge and improving my skillset, and mindset in Sustainability Development.",
   experience: [
     {
-      title: (
-        <p>
-          Intern at Marketing and Communications Team
-          <br />@ <span className="text-[#ffad1d]">Fulbright University Vietnam</span>
-        </p>
-      ),
-      company: 'TotallyAwesome',
-      logo: '/totally-awesome.jpg',
+      title: 'Intern at Marketing and Communications Team',
+      company: 'Fulbright University Vietnam',
+      color: '#ffad1d',
+      logo: '/images/fulbright-logo.jpeg',
       dates: 'August 2023 - Present',
-      badges: [
-        { title: 'Website', icon: IconWorld, href: 'https://www.totallyawesome.tv' },
-        { title: 'Linkedin', icon: IconBrandLinkedin, href: 'https://www.linkedin.com/company/totallyawesome' }
-      ],
+      linkedin: 'https://www.linkedin.com/company/pacificlinks',
       description: (
         <ul className="flex flex-col gap-4 tracking-tight">
           <li>
             Creating content, designing and editing videos for school promotion, including school Facebook Page, Tiktok
             and Instagram. Highlighted sample with 1{' '}
-            <a className="font-semibold" href="https://www.facebook.com/share/p/M1K4WcNQaJQMvm77/">
+            <a className="font-semibold text-[#ffad1d]" href="https://www.facebook.com/share/p/M1K4WcNQaJQMvm77/">
               post
             </a>{' '}
             and 1{' '}
-            <a className="font-semibold" href="https://fb.watch/tvwQmFp95T/">
+            <a className="font-semibold text-[#ffad1d]" href="https://fb.watch/tvwQmFp95T/">
               video
             </a>
             <span>.</span>
@@ -50,21 +49,12 @@ const resume = {
       )
     },
     {
-      title: (
-        <p>
-          President @{' '}
-          <a className="text-[#4472C4]" href="https://www.socialimpactcatalyst.org/">
-            FUV Social Impact Catalyst Vietnam
-          </a>
-        </p>
-      ),
+      title: 'President',
       company: 'FUV Social Impact Catalyst Vietnam',
+      color: '#4472C4',
       logo: '/images/sic-logo.png',
       dates: 'January 2023 - Present',
-      badges: [
-        { title: 'Website', icon: IconWorld, href: 'https://pacificlinks.org' },
-        { title: 'Linkedin', icon: IconBrandLinkedin, href: 'https://www.linkedin.com/company/pacificlinks' }
-      ],
+      linkedin: 'https://www.linkedin.com/company/pacificlinks',
       description: (
         <ul className="flex flex-col gap-4">
           <li>
@@ -88,19 +78,12 @@ const resume = {
       )
     },
     {
-      title: (
-        <p>
-          Admissions Student Assistant Workstudy
-          <br />@ <span className="text-[#ffad1d]">Fulbright University Vietnam</span>
-        </p>
-      ),
-      company: 'FUV Social Impact Catalyst Vietnam',
-      logo: '/images/sic-logo.png',
+      title: 'Admissions Student Assistant Workstudy',
+      company: 'Fulbright University Vietnam',
+      color: '#ffad1d',
+      logo: '/images/fulbright-logo.png',
       dates: 'August 2021 - Present',
-      badges: [
-        { title: 'Website', icon: IconWorld, href: 'https://pacificlinks.org' },
-        { title: 'Linkedin', icon: IconBrandLinkedin, href: 'https://www.linkedin.com/company/pacificlinks' }
-      ],
+      linkedin: 'https://www.linkedin.com/company/pacificlinks',
       description: (
         <ul className="flex flex-col gap-4">
           <li>
@@ -127,25 +110,18 @@ const resume = {
       )
     },
     {
-      title: (
-        <p>
-          Intern at Development and Strategic Initiatives Department
-          <br />@ <span className="text-[#ffad1d]">Fulbright University Vietnam</span>
-        </p>
-      ),
-      company: 'FUV Social Impact Catalyst Vietnam',
+      title: 'Intern at Development and Strategic Initiatives Department',
+      company: 'Fulbright University Vietnam',
+      color: '#ffad1d',
       logo: '/images/fulbright-logo.jpeg',
       dates: 'August 2022 - August 2023',
-      badges: [
-        { title: 'Website', icon: IconWorld, href: 'https://pacificlinks.org' },
-        { title: 'Linkedin', icon: IconBrandLinkedin, href: 'https://www.linkedin.com/company/pacificlinks' }
-      ],
+      linkedin: 'https://www.linkedin.com/company/pacificlinks',
       description: (
         <ul>
           <li>
             Main coordinator of Talent Giving at{' '}
             <a
-              className="font-semibold"
+              className="font-semibold text-[#ffad1d]"
               href="https://fulbright.edu.vn/fulbright-fun-run-2023-where-the-spirit-of-community-and-friendship-truly-shined/"
             >
               Fulbright Giving Week
@@ -167,18 +143,12 @@ const resume = {
       )
     },
     {
-      title: (
-        <p>
-          President @ <span className="text-[#00196e]">Fulbright University Business Club</span>
-        </p>
-      ),
-      company: 'FUV Social Impact Catalyst Vietnam',
+      title: 'President',
+      company: 'Fulbright University Business Club',
+      color: '#00196e',
       logo: '/images/fbc-logo.jpg',
       dates: 'August 2022 - August 2023',
-      badges: [
-        { title: 'Website', icon: IconWorld, href: 'https://pacificlinks.org' },
-        { title: 'Linkedin', icon: IconBrandLinkedin, href: 'https://www.linkedin.com/company/pacificlinks' }
-      ],
+      linkedin: 'https://www.linkedin.com/company/pacificlinks',
       description: (
         <ul>
           <li>

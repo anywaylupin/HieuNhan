@@ -1,12 +1,25 @@
 'use client';
 
-import content from '@/content/resume';
+import { useTheme } from 'next-themes';
 
-import { FloatingDock } from '../ui';
-import { ThemeSwitch } from 'nextra-theme-blog';
+import resume from '@/content/resume';
+
+import { IconMoonStars, IconSun } from '../icons';
+import { Button, FloatingDock } from '../ui';
+
+export const ModeToggle = () => {
+  const { theme, setTheme } = useTheme();
+
+  return (
+    <Button variant="link" type="button" size="icon" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+      <IconSun className="text-neutral-800 dark:hidden dark:text-neutral-200" />
+      <IconMoonStars className="hidden text-neutral-800 dark:block dark:text-neutral-200" />
+    </Button>
+  );
+};
 
 export const Navbar = () => {
-  const navItems = [...content.navbar, { title: 'Theme', icon: <ThemeSwitch /> }];
+  const navItems = [...resume.navbar, { title: 'Theme', icon: <ModeToggle /> }];
 
   return (
     <nav className="fixed right-8 bottom-4 z-50 flex max-h-max origin-bottom items-center justify-center md:right-auto">

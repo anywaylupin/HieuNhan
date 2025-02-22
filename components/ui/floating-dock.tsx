@@ -1,6 +1,6 @@
 'use client';
 
-import { AnimatePresence, motion, MotionValue, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { AnimatePresence, motion, MotionValue, useMotionValue, useSpring, useTransform } from 'motion/react';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 
@@ -32,7 +32,7 @@ const FloatingDockMobile = ({ items, className }: { items: FloatingDockItem[]; c
             {items.map((item, idx) => (
               <motion.li
                 key={item.title}
-                className="flex size-10 items-center justify-center rounded-full border border-border bg-background"
+                className="border-border bg-background flex size-10 items-center justify-center rounded-full border"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: -8 }}
                 exit={{ opacity: 0, y: 10, transition: { delay: idx * 0.05 } }}
@@ -52,7 +52,7 @@ const FloatingDockMobile = ({ items, className }: { items: FloatingDockItem[]; c
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="flex size-10 items-center justify-center rounded-full border border-border bg-background"
+        className="border-border bg-background flex size-10 items-center justify-center rounded-full border"
       >
         <IconLayoutNavbarCollapse className="text=primary h-5 w-5" />
       </button>
@@ -67,7 +67,7 @@ const FloatingDockDesktop = ({ items, className }: FloatingDockProps) => {
     <motion.ul
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
-      className={cn('mx-auto hidden h-14 items-center rounded-2xl bg-background px-4 py-8 md:flex', className)}
+      className={cn('bg-background mx-auto hidden h-14 items-center rounded-2xl px-4 py-8 md:flex', className)}
       layout
     >
       {items.map((item) => (
@@ -114,7 +114,7 @@ const IconContainer = ({ mouseX, title, icon }: { title: string; icon: React.Rea
       style={{ width, height }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative flex aspect-square items-center justify-center rounded-full hover:bg-muted"
+      className="hover:bg-muted relative flex aspect-square items-center justify-center rounded-full"
       layout
     >
       <AnimatePresence>
@@ -123,7 +123,7 @@ const IconContainer = ({ mouseX, title, icon }: { title: string; icon: React.Rea
             initial={{ opacity: 0, y: 1, x: '-50%' }}
             animate={{ opacity: 1, y: 0, x: '-50%' }}
             exit={{ opacity: 0, y: 2, x: '-50%' }}
-            className="absolute -top-8 left-1/2 w-fit -translate-x-1/2 whitespace-pre rounded-md border border-border bg-background px-2 py-0.5 text-xs font-semibold text-primary md:text-sm"
+            className="border-border bg-background text-primary absolute -top-8 left-1/2 w-fit rounded-md border px-2 py-0.5 text-xs font-semibold whitespace-pre md:text-sm"
             layout
           >
             {title}
@@ -132,7 +132,7 @@ const IconContainer = ({ mouseX, title, icon }: { title: string; icon: React.Rea
       </AnimatePresence>
       <motion.div
         style={{ width: widthIcon, height: heightIcon }}
-        className="flex items-center justify-center text-primary"
+        className="text-primary flex items-center justify-center"
         layout
       >
         {icon}

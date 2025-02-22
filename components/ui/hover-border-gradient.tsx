@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { useEffect, useState } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -72,7 +72,7 @@ export const HoverBorderGradient = ({
         animate={{ background: hovered ? [movingMap[direction], background] : movingMap[direction] }}
         transition={{ ease: 'linear', duration: duration ?? 1 }}
       />
-      <div className="z-1 absolute inset-[2px] flex-none" />
+      <div className="absolute inset-[2px] z-1 flex-none" />
     </Tag>
   );
 };

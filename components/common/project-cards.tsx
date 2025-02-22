@@ -36,7 +36,7 @@ export const ProjectCards = () => {
 
         <CardContent className="mt-auto flex w-full flex-wrap gap-1">
           {tags?.map((tag) => (
-            <Badge className="px-1 py-0 text-[10px]" variant="secondary" key={tag}>
+            <Badge className="py-0 text-[10px]" variant="secondary" key={tag}>
               {tag}
             </Badge>
           ))}
@@ -46,14 +46,14 @@ export const ProjectCards = () => {
           <div className="flex flex-row flex-wrap items-start gap-1">
             {website && (
               <Link href={website} target="_blank">
-                <Badge className="flex gap-2 px-2 py-1 text-[10px]">
+                <Badge className="flex gap-2 py-1 text-[10px]">
                   <IconWorld className="size-4" /> Website
                 </Badge>
               </Link>
             )}
             {github && (
               <Link href={github} target="_blank">
-                <Badge className="flex gap-2 px-2 py-1 text-[10px]">
+                <Badge className="flex gap-2 py-1 text-[10px]">
                   <IconBrandGithub className="size-4" /> Source
                 </Badge>
               </Link>

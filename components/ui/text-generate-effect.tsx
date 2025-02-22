@@ -1,6 +1,6 @@
 'use client';
 
-import { AnimationScope, motion, stagger, useAnimate, useInView, UseInViewOptions } from 'framer-motion';
+import { AnimationScope, motion, stagger, useAnimate, useInView, UseInViewOptions } from 'motion/react';
 import { useEffect } from 'react';
 
 interface TextGenerateEffectProps extends React.ComponentProps<typeof motion.div> {
