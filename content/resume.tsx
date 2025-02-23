@@ -8,15 +8,19 @@ const resume = {
   domain: 'https://hieunhan.vercel.app',
   avatar: '/images/me.png',
   greetings: (
-    <p className="text-2xl">
-      <b>Hello, I&apos;m Hiếu Nhân,</b> <br />
-      <span>
-        A senior Economics major at <b>Fulbright University Vietnam.</b>
+    <p>
+      <span className="inline-block text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+        Hi, I&apos;m Nhân
+      </span>
+      <br />
+      <span className="inline-block max-w-[600px] md:text-xl">
+        A senior Economics major at <b>Fulbright University Vietnam.</b> My ultimate goal is to create a societal impact
+        as a way to give back for what I've received.
       </span>
     </p>
   ),
   about:
-    "My ultimate goal is to create a societal impact as a way to give back for what I've received. I am enthusiastic about challenging myself through a variety of work experiences and am open to different fields to learn and develop my skills. Being a young woman living in a complex and rapidly changing world, I adopted the mission of contributing to the development and closing the gap of inequality among people. To achieve that mission, I urged myself to involve myself in experiencing knowledge and improving my skillset, and mindset in Sustainability Development.",
+    'I am enthusiastic about challenging myself through a variety of work experiences and am open to different fields to learn and develop my skills. Being a young woman living in a complex and rapidly changing world, I adopted the mission of contributing to the development and closing the gap of inequality among people. To achieve that mission, I urged myself to involve myself in experiencing knowledge and improving my skillset, and mindset in Sustainability Development.',
   experience: [
     {
       title: 'Intern at Marketing and Communications Team',

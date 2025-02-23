@@ -1,11 +1,9 @@
-import 'nextra-theme-blog/style.css';
 import './globals.css';
 
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import { Head } from 'nextra/components';
 
-import { Navbar } from '@/components/common';
+import { FloatingNav } from '@/components/common';
 import { ThemeProvider } from '@/components/theme-provider';
 import { cn } from '@/lib/utils';
 
@@ -21,8 +19,6 @@ export const metadata: Metadata = {
 const RootLayout = async ({ children }: React.PropsWithChildren) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Head />
-
       <body
         className={cn(
           'bg-background text-primary flex min-h-screen flex-col items-center gap-10 antialiased transition',
@@ -32,7 +28,7 @@ const RootLayout = async ({ children }: React.PropsWithChildren) => {
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Navbar />
+          <FloatingNav />
           {children}
         </ThemeProvider>
       </body>

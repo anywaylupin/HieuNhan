@@ -18,7 +18,7 @@ export const ModeToggle = () => {
   );
 };
 
-export const Navbar = () => {
+export const FloatingNav = () => {
   const navItems = [...resume.navbar, { title: 'Theme', icon: <ModeToggle /> }];
 
   return (

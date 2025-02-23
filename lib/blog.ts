@@ -1,46 +1,90 @@
 import fs from 'fs';
-import matter from 'gray-matter';
 import path from 'path';
-import rehypePrettyCode from 'rehype-pretty-code';
-import rehypeStringify from 'rehype-stringify';
-import remarkParse from 'remark-parse';
-import remarkRehype from 'remark-rehype';
-import { unified } from 'unified';
 
-const getMDXFiles = (dir: string) => fs.readdirSync(dir).filter((file) => path.extname(file) === '.mdx');
-
-export const markdownToHTML = async (markdown: string) => {
-  const processed = await unified()
-    .use(remarkParse)
-    .use(remarkRehype)
-    .use(rehypePrettyCode, {
-      theme: { light: 'min-light', dark: 'min-dark' },
-      keepBackground: false
-    })
-    .use(rehypeStringify)
-    .process(markdown);
-
-  return processed.toString();
+type Metadata = {
+  title: string;
+  publishedAt: string;
+  summary: string;
+  image?: string;
 };
 
-export const getPost = async (slug: string) => {
-  const filePath = path.join('content', `${slug}.mdx`);
-  const source = fs.readFileSync(filePath, 'utf-8');
-  const { content: rawContent, data: metadata } = matter(source);
-  const content = await markdownToHTML(rawContent);
+function parseFrontmatter(fileContent: string) {
+  let frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
+  let match = frontmatterRegex.exec(fileContent);
+  let frontMatterBlock = match![1];
+  let content = fileContent.replace(frontmatterRegex, '').trim();
+  let frontMatterLines = frontMatterBlock.trim().split('\n');
+  let metadata: Partial<Metadata> = {};
 
-  return { source: content, metadata, slug };
-};
+  frontMatterLines.forEach((line) => {
+    let [key, ...valueArr] = line.split(': ');
+    let value = valueArr.join(': ').trim();
+    value = value.replace(/^['"](.*)['"]$/, '$1'); // Remove quotes
+    metadata[key.trim() as keyof Metadata] = value;
+  });
 
-const getAllPosts = async (dir: string) => {
-  const mdxFiles = getMDXFiles(dir);
-  return Promise.all(
-    mdxFiles.map(async (file) => {
-      const slug = path.basename(file, path.extname(file));
-      const { metadata, source } = await getPost(slug);
-      return { metadata, slug, source };
-    })
-  );
-};
+  return { metadata: metadata as Metadata, content };
+}
 
-export const getBlogPosts = () => getAllPosts(path.join(process.cwd(), 'content'));
+function getMDXFiles(dir) {
+  return fs.readdirSync(dir).filter((file) => path.extname(file) === '.mdx');
+}
+
+function readMDXFile(filePath) {
+  let rawContent = fs.readFileSync(filePath, 'utf-8');
+  return parseFrontmatter(rawContent);
+}
+
+function getMDXData(dir) {
+  let mdxFiles = getMDXFiles(dir);
+  return mdxFiles.map((file) => {
+    let { metadata, content } = readMDXFile(path.join(dir, file));
+    let slug = path.basename(file, path.extname(file));
+
+    return {
+      metadata,
+      slug,
+      content
+    };
+  });
+}
+
+export function getBlogPosts() {
+  return getMDXData(path.join(process.cwd(), 'app', 'blog', 'posts'));
+}
+
+export function formatDate(date: string, includeRelative = false) {
+  let currentDate = new Date();
+  if (!date.includes('T')) {
+    date = `${date}T00:00:00`;
+  }
+  let targetDate = new Date(date);
+
+  let yearsAgo = currentDate.getFullYear() - targetDate.getFullYear();
+  let monthsAgo = currentDate.getMonth() - targetDate.getMonth();
+  let daysAgo = currentDate.getDate() - targetDate.getDate();
+
+  let formattedDate = '';
+
+  if (yearsAgo > 0) {
+    formattedDate = `${yearsAgo}y ago`;
+  } else if (monthsAgo > 0) {
+    formattedDate = `${monthsAgo}mo ago`;
+  } else if (daysAgo > 0) {
+    formattedDate = `${daysAgo}d ago`;
+  } else {
+    formattedDate = 'Today';
+  }
+
+  let fullDate = targetDate.toLocaleString('en-us', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+  });
+
+  if (!includeRelative) {
+    return fullDate;
+  }
+
+  return `${fullDate} (${formattedDate})`;
+}

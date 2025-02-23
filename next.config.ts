@@ -1,9 +1,16 @@
-import nextra from 'nextra';
+import type { NextConfig } from 'next';
 
-const withNextra = nextra({
-  // ... Other Nextra config options
-});
+const config: NextConfig = {
+  trailingSlash: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: process.env.NEXT_PUBLIC_WORDPRESS_API_HOSTNAME,
+        port: ''
+      }
+    ]
+  }
+};
 
-export default withNextra({
-  // ... Other Next.js config options
-});
+export default config;
