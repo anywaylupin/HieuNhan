@@ -1,460 +1,473 @@
-# A Feature Rich App Router WordPress Example
+# Next.js Starter for WordPress Headless CMS
 
-This is an example on how you can build a Next.js 14 project (with App Router), using [WordPress](https://wordpress.org) as the data source.
+> [Watch the Demo Video](https://www.youtube.com/watch?v=JZc1-BcOvYw)
 
-## Key features:
+![CleanShot 2025-01-07 at 23 18 41@2x](https://github.com/user-attachments/assets/8b268c36-eb0d-459f-b9f1-b5f129bd29bc)
 
-- `robots.ts`: This automatically gets the robots.txt of the API route and serves it on the `/robots.txt` route.
-- `sitemap.ts`: This automatically gets all paths from the API and generates a sitemap to serve on the `/sitemap.xml` route.
-- `middleware.ts`: This contains a middleware function that checks the users path for stored redirects, and redirects the user if a match is found.
-- `[[...slug]]`: This is the catch-all route that is used to render all pages. It is important that this route is not removed, as it is used to render all pages. It fetches the ContentType and renders the corresponding
-- `not-found.tsx`: This page is used for dynamic 404 handling - adjust the database id to match your decired WordPress page, and make sure the WordPress slug is "not-found", your 404 page will then be editable from your CMS.
-- `codegen.ts`: Automatic type generation for your WordPress installation
-- `Draft Mode`: Seamless Preview / Draft Preview support, using authentication through WPGraphQL JWT Authentication and Next.js Draft Mode
-- `On Demand Cache Revalidation`: Including a bare minimum WordPress theme that implements cache revalidation, WordPress link rewrites and other utils for integrating with Next.js
+[![Deploy with Vercel](https://vercel.com/button)](<https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F9d8dev%2Fnext-wp&env=WORDPRESS_URL,WORDPRESS_HOSTNAME,WORDPRESS_WEBHOOK_SECRET&envDescription=Add%20WordPress%20URL%20with%20Rest%20API%20enabled%20(ie.%20https%3A%2F%2Fwp.example.com)%2C%20the%20hostname%20for%20Image%20rendering%20in%20Next%20JS%20(ie.%20wp.example.com)%2C%20and%20a%20secret%20key%20for%20secure%20revalidation&project-name=next-wp&repository-name=next-wp&demo-title=Next%20JS%20and%20WordPress%20Starter&demo-url=https%3A%2F%2Fwp.9d8.dev>)
 
-## Deploy your own
+This is a starter template for building a Next.js application that fetches data from a WordPress site using the WordPress REST API. The template includes functions for fetching posts, categories, tags, authors, and featured media from a WordPress site and rendering them in a Next.js application.
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/cms-wordpress)
+`next-wp` is built with [Next.js 15](https://nextjs.org/docs), [React](https://react.dev/), [Typescript](https://www.typescriptlang.org/docs/), [Tailwind](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.com/docs), and [brijr/craft](https://github.com/brijr/craft). It pairs nicely with [brijr/components](https://components.bridger.to/) for a rapid development experience. Built by Cameron and Bridger at [9d8](https://9d8.dev).
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/cms-wordpress&project-name=cms-wordpress&repository-name=cms-wordpress)
+## Table of Contents
 
-### Related examples
+- [Next.js Starter for WordPress Headless CMS](#nextjs-starter-for-wordpress-headless-cms)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [WordPress Functions](#wordpress-functions)
+  - [WordPress Types](#wordpress-types)
+  - [Post Card Component](#post-card-component)
+  - [Filter Component](#filter-component)
+  - [Dynamic Sitemap](#dynamic-sitemap)
+  - [Dynamic OG Images](#dynamic-og-images)
+  - [Revalidation Setup](#revalidation-setup)
+  - [Search Functionality](#search-functionality)
 
-- [AgilityCMS](/examples/cms-agilitycms)
-- [Builder.io](/examples/cms-builder-io)
-- [ButterCMS](/examples/cms-buttercms)
-- [Contentful](/examples/cms-contentful)
-- [Cosmic](/examples/cms-cosmic)
-- [DatoCMS](/examples/cms-datocms)
-- [DotCMS](/examples/cms-dotcms)
-- [Drupal](/examples/cms-drupal)
-- [Enterspeed](/examples/cms-enterspeed)
-- [Ghost](/examples/cms-ghost)
-- [GraphCMS](/examples/cms-graphcms)
-- [Kontent.ai](/examples/cms-kontent-ai)
-- [MakeSwift](/examples/cms-makeswift)
-- [Payload](/examples/cms-payload)
-- [Plasmic](/examples/cms-plasmic)
-- [Prepr](/examples/cms-prepr)
-- [Prismic](/examples/cms-prismic)
-- [Sanity](/examples/cms-sanity)
-- [Sitecore XM Cloud](/examples/cms-sitecore-xmcloud)
-- [Sitefinity](/examples/cms-sitefinity)
-- [Storyblok](/examples/cms-storyblok)
-- [TakeShape](/examples/cms-takeshape)
-- [Tina](/examples/cms-tina)
-- [Umbraco](/examples/cms-umbraco)
-- [Umbraco heartcore](/examples/cms-umbraco-heartcore)
-- [Webiny](/examples/cms-webiny)
-- [WordPress](/examples/cms-wordpress)
-- [Blog Starter](/examples/blog-starter)
+## Overview
 
-## How to use
+### What's included?
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), [pnpm](https://pnpm.io), or [Bun](https://bun.sh/docs/cli/bunx) to bootstrap the example:
+✅ Type-safe data layer with the WordPress RestAPI<br>
+✅ Granular access to revalidation and cache tags<br>
+✅ Setup for all basic WordPress options: Posts, Pages, Authors, Categories, Tags<br>
+✅ Easy integration with custom post types and ACF<br>
+✅ Dynamic routes for Posts and Pages<br>
+✅ Design system for layout and prose styling ([craft-ds.com](https://craft-ds.com))<br>
+✅ Filter, Search, and Card components<br>
+✅ Dynamically rendered sitemap<br>
+✅ Dynamically generated metadata<br>
+✅ Dynamically generated OG/Twitter Cards for Posts and pages<br>
+✅ Responsive Nav and Footer components<br>
+✅ Site configuration file<br>
+✅ Menu configuration file<br>
+✅ Lite and dark mode support<br>
+✅ shadcn/ui components and theming<br>
+✅ Vercel analytics<br>
 
-```bash
-npx create-next-app --example cms-wordpress cms-wordpress-app
-```
+### Important files
 
-```bash
-yarn create next-app --example cms-wordpress cms-wordpress-app
-```
+- `lib/wordpress.ts` -> Functions for fetching WordPress CMS via Rest API with cache tags
+- `lib/wordpress.d.ts` -> Type declarations for the WordPress Rest API
+- `components/craft.tsx` -> Handles the design system for the site and prose styling
+- `components/posts/post-card.tsx` -> Component and styling for posts
+- `components/posts/filter.tsx` -> Filter component for Posts
+- `components/posts/search-input.tsx` -> Search component for Posts
+- `menu.config.ts` -> Site nav menu configuration for desktop and mobile
+- `site.config.ts` -> Configuration for `sitemap.ts` and more
+- `app/sitemap.ts` -> Dynamically generated sitemap
+
+The following environment variables are required in your `.env.local` file:
 
 ```bash
-pnpm create next-app --example cms-wordpress cms-wordpress-app
+WORDPRESS_URL="https://wordpress.com"
+WORDPRESS_HOSTNAME="wordpress.com"
+WORDPRESS_WEBHOOK_SECRET="your-secret-key-here"
 ```
 
-```bash
-bunx create-next-app --example cms-wordpress cms-wordpress-app
-```
+You can find the example of `.env.local` file in the `.env.example` file (and in Vercel).
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## WordPress Functions
 
-## Configuration
+The `lib/wordpress.ts` file contains a comprehensive set of functions for interacting with the WordPress REST API. Each function is optimized for Next.js 15's caching system and includes proper error handling.
 
-### WordPress
+### Core Functionality
 
-1. Set `Site Address (URL)` to your frontend URL, e.g. `https://localhost:3000` in Settings -> General
-2. Make sure Permalinks are set to `Post name` in Settings -> Permalinks
-3. Set `Sample page` as `Static page` in Settings -> Reading
-4. Create a new page called `404 not found` ensuring the slug is `404-not-found`
-5. Install and activate following plugins:
-   - Add WPGraphQL SEO
-   - Classic Editor
-   - Redirection
-   - WPGraphQL
-   - [WPGraphQL JWT Authentication](https://github.com/wp-graphql/wp-graphql-jwt-authentication/releases)
-   - Yoast SEO
-   - [Advanced Custom Fields PRO](https://www.advancedcustomfields.com/pro/) (optional)
-   - WPGraphQL for ACF (optional)
-6. Do first-time install of Redirection. Recommended to enable monitor of changes
-7. Configure Yoast SEO with:
-
-   - Disable XML Sitemaps under Yoast SEO -> Settings
-   - If you did not change the `Site Address (URL)` before installing Yoast, it will ask you to run optimize SEO data after changing permalinks, do so
-   - Generate a robots.txt file under Yoast SEO -> Tools -> File Editor
-   - Modify robots.txt sitemap reference from `wp-sitemap.xml` to `sitemap.xml`
-
-8. `Enable Public Introspection` under GraphQL -> Settings
-9. Add following constants to `wp-config.php`
-   ```php
-   define('HEADLESS_SECRET', 'INSERT_RANDOM_SECRET_KEY');
-   define('HEADLESS_URL', 'INSERT_LOCAL_DEVELOPMENT_URL'); // http://localhost:3000 for local development
-   define('GRAPHQL_JWT_AUTH_SECRET_KEY', 'INSERT_RANDOM_SECRET_KEY');
-   define('GRAPHQL_JWT_AUTH_CORS_ENABLE', true);
-   ```
-10. Create a bare minimum custom WordPress theme, consisting of only 2 files:
-
-- [style.css](https://developer.wordpress.org/themes/basics/main-stylesheet-style-css/#basic-structure)
-- functions.php (see the bottom of this README)
-
-### Next.js
-
-1. Clone the repository
-2. Run `npm install` to install dependencies
-3. Create `.env` file in the root directory and add the following variables:
-
-| Name                                 | Value                                                                   | Example                  | Description                                                                                                                                                         |
-| ------------------------------------ | ----------------------------------------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `NEXT_PUBLIC_BASE_URL`               | Insert base url of frontend                                             | http://localhost:3000    | Used for generating sitemap, redirects etc.                                                                                                                         |
-| `NEXT_PUBLIC_WORDPRESS_API_URL`      | Insert base url of your WordPress installation                          | http://wp-domain.com     | Used when requesting wordpress for data                                                                                                                             |
-| `NEXT_PUBLIC_WORDPRESS_API_HOSTNAME` | The hostname without protocol for your WordPress installation           | wp-domain.com            | Used for dynamically populating the next.config images remotePatterns                                                                                               |
-| `HEADLESS_SECRET`                    | Insert the same random key, that you generated for your `wp-config.php` | INSERT_RANDOM_SECRET_KEY | Used for public exhanges between frontend and backend                                                                                                               |
-| `WP_USER`                            | Insert a valid WordPress username                                       | username                 | Username for a system user created specifically for interacting with your WordPress installation                                                                    |
-| `WP_APP_PASS`                        | Insert application password                                             | 1234 5678 abcd efgh      | [Generate an application password](https://make.wordpress.org/core/2020/11/05/application-passwords-integration-guide/) for the WordPress user defined in `WP_USER` |
-
-> [!WARNING] > `WP_USER` and `WP_APP_PASS` are critical for making preview and redirection work
-
-4. Adjust the ID in `not-found.tsx` to match the post id of your "404 Not Found" page in WordPress
-
-5. `npm run dev` and build an awesome application with WordPress!
-
-> [!NOTE] > Running `npm run dev` will automatically generate typings from the WordPress installation found on the url provided in your environment variable: `NEXT_PUBLIC_WORDPRESS_API_URL`
-
-## GraphQL and typescript types
-
-We are generating typescript types from the provided schema with Codegen.
-
-### Enabling Auto Completion for graphql queries
-
-If you want to add auto completion for your queries, you can do this by installing the "Apollo GraphQL" extension in VS Code and adding an `apollo.config.js` file, next to the `next.config.js`, and add the following to it:
-
-```javascript
-module.exports = {
-  client: {
-    service: {
-      name: "WordPress",
-      localSchemaFile: "./src/gql/schema.gql",
-    },
+```typescript
+// Default fetch options for all WordPress API calls
+const defaultFetchOptions = {
+  next: {
+    tags: ["wordpress"],
+    revalidate: 3600, // 1 hour cache
+  },
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
   },
 };
 ```
 
-## Advanced Custom Fields PRO (optional, but recommended)
+### Available Functions
 
-I will recommend building your page content by using the [Flexible Content](https://www.advancedcustomfields.com/resources/flexible-content/) data type in ACF Pro.
-This will make you able to create a "Block Builder" editor experience, but still having everything automatically type generated, and recieving the data in a structured way.
-The default "Gutenberg" editor returns a lot of HTML, which makes you loose a lot of the advantages of using GraphQL with type generation.
+#### Posts
 
-## Redirection setup
+- `getAllPosts(filterParams?: { author?: string; tag?: string; category?: string; })`: Fetches posts with optional filtering by author, tag, or category. Uses cache tags for efficient revalidation.
+- `getPostById(id: number)`: Retrieves a specific post by ID with proper error handling.
+- `getPostBySlug(slug: string)`: Fetches a post using its URL-friendly slug.
 
-The example supports the WordPress "Redirection" plugin. the `WP_USER` and `WP_APP_PASS` environment variables are required, for this to work. By implementing this you can manage redirects for your content, through your WordPress CMS
+#### Categories
 
-## Draft / Preview support
+- `getAllCategories()`: Retrieves all categories with cache invalidation support.
+- `getCategoryById(id: number)`: Gets a specific category with error handling.
+- `getCategoryBySlug(slug: string)`: Fetches a category by its slug.
+- `getPostsByCategory(categoryId: number)`: Gets all posts in a category, using proper cache tags.
 
-The example supports WordPress preview (also draft preview), when enabling `draftMode` in the `api/preview/route.ts` it logs the `WP_USER` in with the `WP_APP_PASS` and requests the GraphQL as an authenticated user. This makes draft and preview available. If a post is in "draft" status, it doesn't have a real slug. In this case we redirect to a "fake" route called `/preview/${id}` and uses the supplied id for fetching data for the post.
+#### Tags
 
-## Cache Revalidation
+- `getAllTags()`: Fetches all available tags.
+- `getTagById(id: number)`: Retrieves a specific tag.
+- `getTagBySlug(slug: string)`: Gets a tag by its slug.
+- `getTagsByPost(postId: number)`: Fetches all tags associated with a post.
+- `getPostsByTag(tagId: number)`: Gets all posts with a specific tag.
 
-All our GraphQL requests has the cache tag `wordpress` - when we update anything in WordPress, we call our `/api/revalidate` route, and revalidates the `wordpress` tag. In this way we ensure that everything is up to date, but only revalidate the cache when there actually are updates.
+#### Pages
 
-## Template handling
+- `getAllPages()`: Retrieves all WordPress pages.
+- `getPageById(id: number)`: Gets a specific page by ID.
+- `getPageBySlug(slug: string)`: Fetches a page by its slug.
 
-We use an "Optional Catch-all Segment" for handling all WordPress content.
-When rendering this component we simply ask GraphQL "what type of content is this route?" and fetch the corresponding template.
-Each template can then have their own queries for fetching specific content for that template.
+#### Authors
 
-## SEO
+- `getAllAuthors()`: Fetches all WordPress authors.
+- `getAuthorById(id: number)`: Gets a specific author.
+- `getAuthorBySlug(slug: string)`: Retrieves an author by slug.
+- `getPostsByAuthor(authorId: number)`: Gets all posts by a specific author.
 
-We are using Yoast SEO for handling SEO in WordPress, and then all routes are requesting the Yoast SEO object, and parsing this to a dynamic `generateMetadata()` function
+#### Media
 
-## Folder structure
+- `getFeaturedMediaById(id: number)`: Retrieves featured media (images) with size information.
 
-The boilerplate is structured as follows:
+### Error Handling
 
-- `app`: Contains the routes and pages of the application
-- `assets`: Contains helpful styles such as the variables
-- `components`: Contains the components used in the application
-- `gql`: Contains auto-generated types from GraphQL via CodeGen
-- `queries`: Contains reusable data fetch requests to GraphQL
-- `utils`: Contains helpful functions used across the application
+All functions use the custom `WordPressAPIError` class for consistent error handling:
 
-## WordPress theme functions.php
+```typescript
+class WordPressAPIError extends Error {
+  constructor(
+    message: string,
+    public status: number,
+    public endpoint: string,
+  ) {
+    super(message);
+    this.name = "WordPressAPIError";
+  }
+}
+```
 
-This `functions.php` is implementing different useful features for using WordPress with Next.js:
+### Cache Management
 
-- Setting up a primary menu (fetched in `Navigation..tsx`)
-- Rewriting preview and rest links to match the frontend instead of the WordPress installation
-- Implementing cache tag revalidation everytime you update a post in WordPress
-- Implementing rest endpoints for sitemap generation
+Each function supports Next.js 15's cache tags for efficient revalidation:
 
-```php
-<?php
-/**
- * Registers new menus
- *
- * @return void
- */
-add_action('init', 'register_new_menu');
-function register_new_menu()
+```typescript
+// Example cache configuration
 {
-  register_nav_menus(
-    array(
-      'primary-menu' => __('Primary menu')
-    )
-  );
-}
-
-/**
- * Changes the REST API root URL to use the home URL as the base.
- *
- * @param string $url The complete URL including scheme and path.
- * @return string The REST API root URL.
- */
-add_filter('rest_url', 'home_url_as_api_url');
-function home_url_as_api_url($url)
-{
-  $url = str_replace(home_url(), site_url(), $url);
-  return $url;
-}
-
-/**
- * Customize the preview button in the WordPress admin.
- *
- * This function modifies the preview link for a post to point to a headless client setup.
- *
- * @param string  $link Original WordPress preview link.
- * @param WP_Post $post Current post object.
- * @return string Modified headless preview link.
- */
-add_filter( 'preview_post_link', 'set_headless_preview_link', 10, 2 );
-function set_headless_preview_link( string $link, WP_Post $post ): string {
-	// Set the front-end preview route.
-  $frontendUrl = HEADLESS_URL;
-
-	// Update the preview link in WordPress.
-  return add_query_arg(
-    [
-      'secret' => HEADLESS_SECRET,
-      'id' => $post->ID,
-    ],
-    esc_url_raw( esc_url_raw( "$frontendUrl/api/preview" ))
-  );
-}
-
-add_filter( 'rest_prepare_page', 'set_headless_rest_preview_link', 10, 2 );
-add_filter( 'rest_prepare_post', 'set_headless_rest_preview_link' , 10, 2 );
-function set_headless_rest_preview_link( WP_REST_Response $response, WP_Post $post ): WP_REST_Response {
-  // Check if the post status is 'draft' and set the preview link accordingly.
-  if ( 'draft' === $post->post_status ) {
-    $response->data['link'] = get_preview_post_link( $post );
-    return $response;
-  }
-
-  // For published posts, modify the permalink to point to the frontend.
-  if ( 'publish' === $post->post_status ) {
-
-    // Get the post permalink.
-    $permalink = get_permalink( $post );
-
-    // Check if the permalink contains the site URL.
-    if ( false !== stristr( $permalink, get_site_url() ) ) {
-
-      $frontendUrl = HEADLESS_URL;
-
-      // Replace the site URL with the frontend URL.
-      $response->data['link'] = str_ireplace(
-        get_site_url(),
-        $frontendUrl,
-        $permalink
-      );
-    }
-  }
-
-  return $response;
-}
-
-
-/**
- * Adds the headless_revalidate function to the save_post action hook.
- * This function makes a PUT request to the headless site' api/revalidate endpoint with JSON body: paths = ['/path/to/page', '/path/to/another/page']
- * Requires HEADLESS_URL and HEADLESS_SECRET to be defined in wp-config.php
- *
- * @param int $post_ID The ID of the post being saved.
- * @return void
- */
-add_action('transition_post_status', 'headless_revalidate', 10, 3);
-function headless_revalidate(string $new_status, string $old_status, object $post ): void
-{
-  if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
-    return;
-  }
-
-  // Ignore drafts and inherited posts.
-  if ( ( 'draft' === $new_status && 'draft' === $old_status ) || 'inherit' === $new_status ) {
-    return;
-  }
-
-  $frontendUrl = HEADLESS_URL;
-  $headlessSecret = HEADLESS_SECRET;
-
-  $data = json_encode([
-    'tags'  => ['wordpress'],
-  ]);
-
-  $response = wp_remote_request("$frontendUrl/api/revalidate/", [
-    'method'  => 'PUT',
-    'body'    => $data,
-    'headers' => [
-      'X-Headless-Secret-Key' => $headlessSecret,
-      'Content-Type'  => 'application/json',
-    ],
-  ]);
-
-  // Check if the request was successful
-  if (is_wp_error($response)) {
-    // Handle error
-    error_log($response->get_error_message());
+  next: {
+    tags: ["wordpress", "posts", `post-${id}`],
+    revalidate: 3600,
   }
 }
+```
 
-function wsra_get_user_inputs()
-{
-  $pageNo = sprintf("%d", $_GET['pageNo']);
-  $perPage = sprintf("%d", $_GET['perPage']);
-  // Check for array key taxonomyType
-  if (array_key_exists('taxonomyType', $_GET)) {
-    $taxonomy = $_GET['taxonomyType'];
-  } else {
-    $taxonomy = 'category';
+### Usage Example
+
+```typescript
+try {
+  // Fetch posts with filtering
+  const posts = await getAllPosts({
+    author: "123",
+    category: "news",
+    tag: "featured",
+  });
+
+  // Handle errors properly
+} catch (error) {
+  if (error instanceof WordPressAPIError) {
+    console.error(`API Error: ${error.message} (${error.status})`);
   }
-  $postType = $_GET['postType'];
-  $paged = $pageNo ? $pageNo : 1;
-  $perPage = $perPage ? $perPage : 100;
-  $offset = ($paged - 1) * $perPage;
-  $args = array(
-    'number' => $perPage,
-    'offset' => $offset,
-  );
-  $postArgs = array(
-    'posts_per_page' => $perPage,
-    'post_type' => strval($postType ? $postType : 'post'),
-    'paged' => $paged,
-  );
+}
+```
 
-  return [$args, $postArgs, $taxonomy];
+These functions are designed to work seamlessly with Next.js 15's App Router and provide proper TypeScript support through the types defined in `wordpress.d.ts`.
+
+## WordPress Types
+
+The `lib/wordpress.d.ts` file contains comprehensive TypeScript type definitions for WordPress entities. The type system is built around a core `WPEntity` interface that provides common properties for WordPress content:
+
+```typescript
+interface WPEntity {
+  id: number;
+  date: string;
+  date_gmt: string;
+  modified: string;
+  modified_gmt: string;
+  slug: string;
+  status: "publish" | "future" | "draft" | "pending" | "private";
+  link: string;
+  guid: {
+    rendered: string;
+  };
+}
+```
+
+Key type definitions include:
+
+### Content Types
+
+- `Post`: Blog posts and articles (extends `WPEntity`)
+- `Page`: Static pages (extends `WPEntity`)
+- `Author`: User information
+- `Category`: Post categories (extends `Taxonomy`)
+- `Tag`: Post tags (extends `Taxonomy`)
+- `FeaturedMedia`: Media attachments (extends `WPEntity`)
+
+### Shared Interfaces
+
+- `RenderedContent`: For content with HTML rendering
+- `RenderedTitle`: For titles with HTML rendering
+- `Taxonomy`: Base interface for categories and tags
+
+### Component Types
+
+```typescript
+interface FilterBarProps {
+  authors: Author[];
+  tags: Tag[];
+  categories: Category[];
+  selectedAuthor?: Author["id"];
+  selectedTag?: Tag["id"];
+  selectedCategory?: Category["id"];
+  onAuthorChange?: (authorId: Author["id"] | undefined) => void;
+  onTagChange?: (tagId: Tag["id"] | undefined) => void;
+  onCategoryChange?: (categoryId: Category["id"] | undefined) => void;
+}
+```
+
+### Media Types
+
+```typescript
+interface MediaDetails {
+  width: number;
+  height: number;
+  file: string;
+  sizes: Record<string, MediaSize>;
 }
 
-function wsra_generate_author_api()
-{
-  [$args] = wsra_get_user_inputs();
-  $author_urls = array();
-  $authors =  get_users($args);
-  foreach ($authors as $author) {
-    $fullUrl = esc_url(get_author_posts_url($author->ID));
-    $url = str_replace(home_url(), '', $fullUrl);
-    $tempArray = [
-      'url' => $url,
-    ];
-    array_push($author_urls, $tempArray);
-  }
-  return array_merge($author_urls);
+interface MediaSize {
+  file: string;
+  width: number;
+  height: number;
+  mime_type: string;
+  source_url: string;
 }
+```
 
-function wsra_generate_taxonomy_api()
-{
-  [$args,, $taxonomy] = wsra_get_user_inputs();
-  $taxonomy_urls = array();
-  $taxonomys = $taxonomy == 'tag' ? get_tags($args) : get_categories($args);
-  foreach ($taxonomys as $taxonomy) {
-    $fullUrl = esc_url(get_category_link($taxonomy->term_id));
-    $url = str_replace(home_url(), '', $fullUrl);
-    $tempArray = [
-      'url' => $url,
-    ];
-    array_push($taxonomy_urls, $tempArray);
-  }
-  return array_merge($taxonomy_urls);
-}
+All types are designed to be:
 
-function wsra_generate_posts_api()
-{
-  [, $postArgs] = wsra_get_user_inputs();
-  $postUrls = array();
-  $query = new WP_Query($postArgs);
+- Fully type-safe
+- Extensible
+- Self-documenting
+- Compatible with the WordPress REST API
 
-  while ($query->have_posts()) {
-    $query->the_post();
-    $uri = str_replace(home_url(), '', get_permalink());
-    $tempArray = [
-      'url' => $uri,
-      'post_modified_date' => get_the_modified_date(),
-    ];
-    array_push($postUrls, $tempArray);
-  }
-  wp_reset_postdata();
-  return array_merge($postUrls);
-}
+## Post Card Component
 
-function wsra_generate_totalpages_api()
-{
-  $args = array(
-    'exclude_from_search' => false
-  );
-  $argsTwo = array(
-    'publicly_queryable' => true
-  );
-  $post_types = get_post_types($args, 'names');
-  $post_typesTwo = get_post_types($argsTwo, 'names');
-  $post_types = array_merge($post_types, $post_typesTwo);
-  unset($post_types['attachment']);
-  $defaultArray = [
-    'category' => count(get_categories()),
-    'tag' => count(get_tags()),
-    'user' => (int)count_users()['total_users'],
-  ];
-  $tempValueHolder = array();
-  foreach ($post_types as $postType) {
-    $tempValueHolder[$postType] = (int)wp_count_posts($postType)->publish;
-  }
-  return array_merge($defaultArray, $tempValueHolder);
-}
+The `components/posts/post-card.tsx` file contains the `PostCard` component, which is responsible for rendering a single post card in the application. Here's an overview of the component:
 
-add_action('rest_api_init', function () {
-  register_rest_route('sitemap/v1', '/posts', array(
-    'methods' => 'GET',
-    'callback' => 'wsra_generate_posts_api',
-  ));
-});
-add_action('rest_api_init', function () {
-  register_rest_route('sitemap/v1', '/taxonomy', array(
-    'methods' => 'GET',
-    'callback' => 'wsra_generate_taxonomy_api',
-  ));
-});
-add_action('rest_api_init', function () {
-  register_rest_route('sitemap/v1', '/author', array(
-    'methods' => 'GET',
-    'callback' => 'wsra_generate_author_api',
-  ));
-});
-add_action('rest_api_init', function () {
-  register_rest_route('sitemap/v1', '/totalpages', array(
-    'methods' => 'GET',
-    'callback' => 'wsra_generate_totalpages_api',
-  ));
-});
+### Props
+
+- `post`: A `Post` object representing the WordPress post to be rendered.
+
+### Functionality
+
+1. The component fetches the featured media, author, and category associated with the post using the `getFeaturedMediaById`, `getAuthorById`, and `getCategoryById` functions from `lib/wordpress.ts`.
+
+2. It formats the post date using the `toLocaleDateString` method with the specified options.
+
+3. The component renders a link to the individual post page using the post's slug.
+
+4. Inside the link, it displays the post's featured image, title, excerpt, category, and date.
+
+5. The post title and excerpt are rendered using the `dangerouslySetInnerHTML` attribute to handle HTML content.
+
+6. The component applies various CSS classes to style the post card, including hover effects and transitions.
+
+### Usage
+
+To use the `PostCard` component, import it into your desired page or component and pass a `Post` object as the `post` prop.
+
+## Filter Component
+
+The `components/posts/filter.tsx` file contains the `FilterPosts` component, which provides a filtering interface for posts based on tags, categories, and authors. Here's an overview of the component:
+
+### Props
+
+- `authors`: An array of `Author` objects representing the available authors to filter by.
+- `tags`: An array of `Tag` objects representing the available tags to filter by.
+- `categories`: An array of `Category` objects representing the available categories to filter by.
+- `selectedAuthor`: An optional string representing the currently selected author ID.
+- `selectedTag`: An optional string representing the currently selected tag ID.
+- `selectedCategory`: An optional string representing the currently selected category ID.
+
+### Functionality
+
+1. The component uses the `useRouter` hook from Next.js to handle navigation and URL updates based on the selected filters.
+
+2. It renders three `Select` components for filtering posts by tag, category, and author. Each `Select` component displays the available options and allows the user to select a specific value or choose "All" to reset the filter.
+
+3. When a filter value is changed, the `handleFilterChange` function is called with the filter type and selected value. It updates the URL query parameters accordingly and navigates to the updated URL.
+
+4. The component also includes a "Reset Filters" button that, when clicked, calls the `handleResetFilters` function to navigate back to the `/posts` page without any filters applied.
+
+5. The selected filter values are passed as props to the component and used to set the initial values of the `Select` components.
+
+## Search Functionality
+
+The template includes a powerful search system that works seamlessly with WordPress's REST API:
+
+### Search Component
+
+Located in `components/posts/search-input.tsx`, the SearchInput component provides real-time search capabilities:
+
+```typescript
+// Usage example
+import { SearchInput } from "@/components/posts/search-input";
+
+<SearchInput defaultValue={search} />
+```
+
+Features:
+
+- Real-time search with 300ms debouncing
+- URL-based state management
+- Maintains filters while searching
+- Server-side rendering for SEO
+- Combines with existing category, tag, and author filters
+
+### Search Implementation
+
+The search system is implemented across several layers:
+
+1. **Client-Side Component** (`search-input.tsx`):
+
+   - Uses Next.js App Router's URL handling
+   - Debounced input for better performance
+   - Maintains search state in URL parameters
+
+2. **Server-Side Processing** (`page.tsx`):
+
+   - Handles search parameters server-side
+   - Combines search with other filters
+   - Parallel data fetching for better performance
+
+3. **WordPress API Integration** (`wordpress.ts`):
+   - Comprehensive search across:
+     - Post content and titles
+     - Author names
+     - Category names
+     - Tag names
+   - Smart query construction
+   - Filter combination support
+
+### Search API Functions
+
+The following search-related functions are available in `lib/wordpress.ts`:
+
+```typescript
+// Search posts with combined filters
+getAllPosts({
+  search?: string,
+  author?: string,
+  tag?: string,
+  category?: string
+})
+
+// Search specific content types
+searchCategories(query: string)
+searchTags(query: string)
+searchAuthors(query: string)
+```
+
+### Example Usage
+
+```typescript
+// In your page component
+const { search } = await searchParams;
+const posts = search ? await getAllPosts({ search }) : await getAllPosts();
+```
+
+The search functionality automatically updates filters and results as you type, providing a smooth user experience while maintaining good performance through debouncing and server-side rendering.
+
+## Dynamic OG Images
+
+This starter includes automatic OG image generation for both posts and pages. The OG images are generated on-demand using the Edge Runtime and include:
+
+- Dynamic title and description
+- Modern, responsive design
+- Proper social media card sizes
+- Automatic text wrapping and scaling
+
+You can test the OG image generation by visiting:
 
 ```
+/api/og?title=Your Title&description=Your Description
+```
+
+The OG images are automatically generated for:
+
+- Blog posts: `/posts/[slug]`
+- Pages: `/pages/[slug]`
+
+Each OG image includes:
+
+- The post/page title
+- A snippet of the content (automatically trimmed and cleaned)
+- Consistent branding across your site
+- Proper dimensions for social media platforms
+
+## Dynamic Sitemap
+
+The sitemap for `next-wp` is generated at `@/app/sitemap.ts` and will appear live on your site at `yourdomain.com/sitemap.xml`. In order to set up your sitemap correctly please make sure to update the `site_domain` in the `site.config.ts` to be the domain of your frontend (not your WordPress instance).
+
+## Revalidation Setup
+
+This starter implements an intelligent caching and revalidation system using Next.js 15's cache tags. Here's how it works:
+
+### Cache Tags System
+
+The WordPress API functions use a hierarchical cache tag system:
+
+- Global tag: `wordpress` (affects all content)
+- Content type tags: `posts`, `pages`, `categories`, etc.
+- Individual item tags: `post-123`, `category-456`, etc.
+
+### Automatic Revalidation
+
+1. **Install the WordPress Plugin:**
+
+   - Navigate to `wordpress/next-revalidate/`
+   - Create a zip file of the folder
+   - Install and activate through WordPress admin
+   - Go to Settings > Next.js Revalidation
+   - Configure your Next.js URL and webhook secret
+
+2. **Configure Next.js:**
+
+   - Add `WORDPRESS_WEBHOOK_SECRET` to your environment variables
+   - The webhook endpoint at `/api/revalidate` is already set up
+   - No additional configuration needed
+
+3. **How it Works:**
+   - When content is updated in WordPress, the plugin sends a webhook
+   - The webhook includes content type and ID information
+   - Next.js automatically revalidates the appropriate cache tags
+   - Only affected content is updated, maintaining performance
+
+### Manual Revalidation
+
+You can also manually revalidate content using the `revalidateWordPressData` function:
+
+```typescript
+// Revalidate all WordPress content
+await revalidateWordPressData();
+
+// Revalidate specific content types
+await revalidateWordPressData(["posts"]);
+await revalidateWordPressData(["categories"]);
+
+// Revalidate specific items
+await revalidateWordPressData(["post-123"]);
+await revalidateWordPressData(["category-456"]);
+```
+
+This system ensures your content stays fresh while maintaining optimal performance through intelligent caching.
+
+Built by [Bridger Tower](https://twitter.com/bridgertower) and [Cameron Youngblood](https://twitter.com/youngbloodcyb) at [9d8](https://9d8.dev)
